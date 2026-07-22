@@ -1,0 +1,226 @@
+<div class="product-detail-page">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a routerLink="/">Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <a routerLink="/shop">Shop</a>
+      <i class="bi bi-chevron-right"></i>
+      <a routerLink="/shop">{{product.category}}</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>{{product.name}}</span>
+    </nav>
+
+    <div class="row g-5">
+
+      <!-- LEFT: Image Gallery -->
+      <div class="col-lg-7">
+        <div class="gallery">
+
+          <!-- Thumbnail strip -->
+          <div class="thumbs-strip">
+            <button *ngFor="let img of product.images; let i = index"
+              class="thumb-btn" [class.active]="i === activeImageIndex"
+              (click)="setImage(img, i)" [attr.aria-label]="'View image ' + (i+1)">
+              <img [src]="img" [alt]="product.name + ' view ' + (i+1)" loading="lazy">
+            </button>
+          </div>
+
+          <!-- Main image with zoom -->
+          <div class="main-image-wrap"
+            (mouseenter)="zoomActive=true"
+            (mouseleave)="zoomActive=false;zoomStyle={}"
+            (mousemove)="onMouseMove($event)">
+            <img [src]="activeImage" [alt]="product.name"
+              [ngStyle]="zoomActive ? zoomStyle : {}" class="main-image">
+            <div class="zoom-hint" *ngIf="!zoomActive"><i class="bi bi-zoom-in"></i> Hover to zoom</div>
+            <button class="gallery-nav prev" (click)="prevImage()" aria-label="Previous image"><i class="bi bi-chevron-left"></i></button>
+            <button class="gallery-nav next" (click)="nextImage()" aria-label="Next image"><i class="bi bi-chevron-right"></i></button>
+            <span class="badge-overlay" *ngIf="product.badge">{{product.badge}}</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Product Info -->
+      <div class="col-lg-5">
+        <div class="product-info-panel">
+
+          <div class="product-meta">
+            <span class="product-category">{{product.category}}</span>
+            <span class="product-sku">SKU: {{product.sku}}</span>
+          </div>
+
+          <h1 class="product-name">{{product.name}}</h1>
+
+          <!-- Rating -->
+          <div class="rating-row">
+            <span class="stars" role="img" [attr.aria-label]="product.rating + ' out of 5 stars'">
+              <i class="bi bi-star-fill" *ngFor="let s of stars(product.rating)"></i>
+            </span>
+            <span class="review-count">{{product.reviews}} Reviews</span>
+          </div>
+
+          <!-- Price -->
+          <div class="price-row">
+            <span class="price-main">₹{{product.price | number}}</span>
+            <span class="price-original" *ngIf="product.originalPrice">₹{{product.originalPrice | number}}</span>
+            <span class="price-save" *ngIf="product.originalPrice">Save ₹{{(product.originalPrice - product.price) | number}}</span>
+          </div>
+
+          <!-- Stock -->
+          <div class="stock-row" [class.low-stock]="product.stockCount <= 3">
+            <i class="bi" [class.bi-check-circle-fill]="product.stockCount > 3" [class.bi-exclamation-circle-fill]="product.stockCount <= 3"></i>
+            <span *ngIf="product.stockCount > 3">{{product.stock}}</span>
+            <span *ngIf="product.stockCount <= 3 && product.stockCount > 0">Only {{product.stockCount}} left</span>
+            <span *ngIf="product.stockCount === 0">Out of Stock</span>
+          </div>
+
+          <p class="product-desc">{{product.description}}</p>
+
+          <!-- Finish Selector -->
+          <div class="option-group">
+            <label>Finish: <strong>{{selectedFinish}}</strong></label>
+            <div class="finish-options">
+              <button *ngFor="let f of product.finishes"
+                class="finish-btn" [class.active]="selectedFinish===f"
+                (click)="selectedFinish=f">{{f}}</button>
+            </div>
+          </div>
+
+          <!-- Colour Selector -->
+          <div class="option-group">
+            <label>Colour: <strong>{{selectedColour}}</strong></label>
+            <div class="colour-options">
+              <button *ngFor="let c of product.colours"
+                class="colour-swatch" [class.active]="selectedColour===c.name"
+                [style.background]="c.hex" [attr.aria-label]="c.name" [title]="c.name"
+                (click)="selectedColour=c.name">
+                <i class="bi bi-check" *ngIf="selectedColour===c.name"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="option-group">
+            <label>Quantity</label>
+            <div class="qty-row">
+              <div class="qty-control">
+                <button (click)="quantity=quantity>1?quantity-1:1" aria-label="Decrease">−</button>
+                <span>{{quantity}}</span>
+                <button (click)="quantity=quantity+1" aria-label="Increase">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="action-buttons">
+            <button class="btn-cart" (click)="addToCart()" [class.added]="addedToCart">
+              <i class="bi" [class.bi-bag-plus]="!addedToCart" [class.bi-check2]="addedToCart"></i>
+              {{addedToCart ? 'Added to Cart' : 'Add to Cart'}}
+            </button>
+            <a routerLink="/checkout" class="btn-buy">Buy Now</a>
+          </div>
+
+          <a routerLink="/contact" class="customise-link">
+            <i class="bi bi-palette"></i> Request Customization
+          </a>
+
+          <!-- Delivery & returns -->
+          <div class="delivery-info">
+            <div class="di-item"><i class="bi bi-truck"></i><span>Free delivery on orders above ₹1,00,000</span></div>
+            <div class="di-item"><i class="bi bi-arrow-counterclockwise"></i><span>14-day returns on standard items</span></div>
+            <div class="di-item"><i class="bi bi-shield-check"></i><span>2-year warranty on all furniture</span></div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /row -->
+
+    <!-- Product Detail Tabs -->
+    <div class="detail-tabs">
+      <div class="tab-nav">
+        <button [class.active]="activeTab==='description'" (click)="activeTab='description'">Description</button>
+        <button [class.active]="activeTab==='dimensions'"  (click)="activeTab='dimensions'">Dimensions</button>
+        <button [class.active]="activeTab==='materials'"   (click)="activeTab='materials'">Materials & Finishes</button>
+        <button [class.active]="activeTab==='colours'"     (click)="activeTab='colours'">Colours</button>
+        <button [class.active]="activeTab==='care'"        (click)="activeTab='care'">Care Instructions</button>
+      </div>
+
+      <div class="tab-body">
+
+        <!-- Description -->
+        <div *ngIf="activeTab==='description'" class="tab-pane">
+          <p class="long-desc" *ngFor="let para of product.longDescription.split('\n\n')">{{para}}</p>
+        </div>
+
+        <!-- Dimensions -->
+        <div *ngIf="activeTab==='dimensions'" class="tab-pane">
+          <div class="dim-table">
+            <div class="dim-row" *ngFor="let d of product.dimensions">
+              <span class="dim-label">{{d.label}}</span>
+              <span class="dim-value">{{d.value}}</span>
+            </div>
+          </div>
+          <p class="dim-note"><i class="bi bi-info-circle"></i> Custom dimensions available on request. Contact us to discuss your requirements.</p>
+        </div>
+
+        <!-- Materials -->
+        <div *ngIf="activeTab==='materials'" class="tab-pane">
+          <ul class="material-list">
+            <li *ngFor="let m of product.materials"><i class="bi bi-check2"></i>{{m}}</li>
+          </ul>
+          <div class="finish-detail">
+            <h4>Available Finishes</h4>
+            <div class="finish-tags">
+              <span *ngFor="let f of product.finishes">{{f}}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colours -->
+        <div *ngIf="activeTab==='colours'" class="tab-pane">
+          <p class="tab-intro">All upholstery colours shown below are available on this piece. Custom fabric and leather grades are also available on request.</p>
+          <div class="colour-detail-grid">
+            <div class="colour-detail-item" *ngFor="let c of product.colours">
+              <div class="colour-detail-swatch" [style.background]="c.hex"></div>
+              <span>{{c.name}}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Care -->
+        <div *ngIf="activeTab==='care'" class="tab-pane">
+          <ul class="care-list">
+            <li *ngFor="let c of product.care"><i class="bi bi-info-circle"></i>{{c}}</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <section class="related-section">
+      <div class="related-header">
+        <span class="section-label">You May Also Like</span>
+        <h2 class="section-title">Related Products</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-lg-3" *ngFor="let rp of relatedProducts">
+          <article class="product-card">
+            <a [routerLink]="['/product', rp.id]" class="rp-image">
+              <img [src]="rp.image" [alt]="rp.name" loading="lazy">
+            </a>
+            <div class="rp-info">
+              <span>{{rp.category}}</span>
+              <h4><a [routerLink]="['/product', rp.id]">{{rp.name}}</a></h4>
+              <p>₹{{rp.price | number}}</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+</div>

@@ -1,0 +1,114 @@
+<!-- Hero -->
+<section class="sourcing-hero">
+  <div class="sourcing-hero-image">
+    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600&q=85" alt="Global Sourcing">
+  </div>
+  <div class="sourcing-hero-content container">
+    <span class="section-label">Around The World</span>
+    <h1>Global Sourcing<br>Expertise</h1>
+    <p>25 years of relationships with the world's finest furniture makers, delivered to your door in India.</p>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item" *ngFor="let stat of stats">
+        <strong>{{stat.number}}</strong>
+        <span>{{stat.label}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Intro -->
+<section class="section-padding intro-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <span class="section-label">Why Source With Us</span>
+        <h2 class="section-title">The world's best, delivered to India.</h2>
+      </div>
+      <div class="col-lg-7">
+        <p class="section-description">Most furniture available in India represents a fraction of what the global market produces. Our sourcing programme gives our clients direct access to pieces, materials and collections that are simply unavailable through conventional retail — at factory-direct pricing, with full quality assurance and end-to-end logistics managed by our team.</p>
+        <div class="country-pills">
+          <a [href]="'#'+source.id" class="country-pill" *ngFor="let source of sources">
+            <span>{{source.flag}}</span> {{source.country}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Country Sections -->
+<ng-container *ngFor="let source of sources; let i = index">
+  <section [id]="source.id" class="country-section section-padding" [class.country-alt]="i % 2 !== 0">
+    <div class="container">
+      <div class="row align-items-center g-5" [class.flex-lg-row-reverse]="i % 2 !== 0">
+
+        <!-- Images -->
+        <div class="col-lg-6">
+          <div class="country-images">
+            <div class="ci-main">
+              <img [src]="source.heroImage" [alt]="source.country + ' furniture'" loading="lazy">
+              <div class="ci-flag">{{source.flag}}</div>
+            </div>
+            <div class="ci-thumbs">
+              <img *ngFor="let g of source.gallery" [src]="g" [alt]="source.country" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="col-lg-6">
+          <div class="country-content">
+            <div class="country-number">0{{i+1}}</div>
+            <span class="section-label">{{source.country}}</span>
+            <h2 class="section-title">{{source.tagline}}</h2>
+            <p class="section-description">{{source.description}}</p>
+            <div class="products-sourced">
+              <h4>Products Sourced</h4>
+              <ul>
+                <li *ngFor="let product of source.products">
+                  <i class="bi bi-check2"></i>{{product}}
+                </li>
+              </ul>
+            </div>
+            <a routerLink="/contact" class="sym-btn mt-4">Source From {{source.country}}</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</ng-container>
+
+<!-- Our Sourcing Process -->
+<section class="section-padding process-section">
+  <div class="container">
+    <div class="section-heading text-center">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title">Our Sourcing Process</h2>
+      <p class="section-description mx-auto mt-3" style="max-width:560px">From brief to delivery — a transparent, end-to-end process with you in control at every stage.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card" *ngFor="let step of process">
+        <div class="process-step">{{step.step}}</div>
+        <h4>{{step.title}}</h4>
+        <p>{{step.desc}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sourcing-cta">
+  <div class="container text-center">
+    <span class="section-label">Start Sourcing</span>
+    <h2>Tell Us What You're Looking For.</h2>
+    <p>Share your brief and our sourcing team will find it — wherever in the world it exists.</p>
+    <a routerLink="/contact" class="sym-btn">Submit a Sourcing Brief</a>
+  </div>
+</section>

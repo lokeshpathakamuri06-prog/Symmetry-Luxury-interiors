@@ -1,0 +1,75 @@
+/* Hero */
+.sourcing-hero{min-height:70vh;position:relative;display:flex;align-items:flex-end;padding:180px 0 90px}
+.sourcing-hero-image{position:absolute;inset:0}
+.sourcing-hero-image img{width:100%;height:100%;object-fit:cover}
+.sourcing-hero-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.3) 60%,transparent 100%)}
+.sourcing-hero-content{position:relative;z-index:2}
+.sourcing-hero-content .section-label{color:rgba(255,255,255,0.85)}
+.sourcing-hero-content h1{font-size:clamp(50px,7vw,90px);line-height:.92;color:#fff;margin-bottom:25px}
+.sourcing-hero-content p{max-width:560px;color:rgba(255,255,255,0.82);line-height:1.8;font-size:16px}
+
+/* Stats */
+.stats-bar{background:var(--sym-dark);padding:35px 0}
+.stats-inner{display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px}
+.stat-item{text-align:center}
+.stat-item strong{display:block;font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--sym-gold);line-height:1}
+.stat-item span{font-size:11px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1.5px;display:block;margin-top:6px}
+
+/* Intro */
+.intro-section{}
+.country-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.country-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--sym-border);padding:10px 20px;font-size:13px;text-decoration:none;color:inherit;transition:.25s}
+.country-pill:hover{background:var(--sym-dark);color:#fff;border-color:var(--sym-dark)}
+
+/* Country sections */
+.country-section{scroll-margin-top:80px}
+.country-alt{background:var(--sym-ivory)}
+.country-images{display:flex;flex-direction:column;gap:12px}
+.ci-main{position:relative;overflow:hidden}
+.ci-main img{width:100%;height:500px;object-fit:cover;display:block;transition:.5s}
+.ci-main:hover img{transform:scale(1.04)}
+.ci-flag{position:absolute;top:20px;left:20px;font-size:36px;line-height:1}
+.ci-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ci-thumbs img{width:100%;height:140px;object-fit:cover;display:block;transition:.4s}
+.ci-thumbs img:hover{transform:scale(1.06)}
+.country-content{padding-top:10px}
+.country-number{font-family:'Cormorant Garamond',serif;font-size:120px;color:var(--sym-border);line-height:.8;margin-bottom:-20px;user-select:none}
+.products-sourced{margin-top:32px;padding:30px;background:#fff;border:1px solid var(--sym-border)}
+.country-alt .products-sourced{background:var(--sym-beige)}
+.products-sourced h4{font-size:17px;margin-bottom:18px;text-transform:uppercase;letter-spacing:1px;font-size:12px;color:var(--sym-grey)}
+.products-sourced ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.products-sourced li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--sym-border);font-size:14px;color:var(--sym-grey)}
+.products-sourced li:nth-last-child(-n+2){border-bottom:none}
+.products-sourced li i{color:var(--sym-gold);flex-shrink:0}
+
+/* Process */
+.process-section{background:var(--sym-beige)}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--sym-border);margin-top:60px}
+.process-card{background:var(--sym-beige);padding:40px 35px;transition:.2s}
+.process-card:hover{background:#fff}
+.process-step{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--sym-gold);line-height:1;margin-bottom:20px}
+.process-card h4{font-size:21px;margin-bottom:14px}
+.process-card p{font-size:14px;color:var(--sym-grey);line-height:1.75;margin:0}
+
+/* CTA */
+.sourcing-cta{padding:120px 20px;background:var(--sym-dark)}
+.sourcing-cta .section-label{color:var(--sym-gold)}
+.sourcing-cta h2{font-size:clamp(38px,5vw,68px);color:#fff;margin-bottom:20px}
+.sourcing-cta p{color:rgba(255,255,255,0.7);font-size:16px;line-height:1.8;margin-bottom:40px}
+
+/* Responsive */
+@media(max-width:1199px){.process-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:991px){
+  .sourcing-hero{min-height:auto;padding:140px 0 80px}
+  .ci-main img{height:380px}
+  .country-number{font-size:80px}
+  .products-sourced ul{grid-template-columns:1fr}
+  .products-sourced li:nth-last-child(-n+2){border-bottom:1px solid var(--sym-border)}
+  .products-sourced li:last-child{border-bottom:none}
+}
+@media(max-width:767px){
+  .ci-main img{height:300px}
+  .ci-thumbs img{height:110px}
+  .process-grid{grid-template-columns:1fr}
+  .stat-item strong{font-size:38px}
+}

@@ -1,0 +1,255 @@
+<!-- 1. Hero Banner -->
+<section class="hero-section">
+  <div class="hero-image"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=85" alt="Luxury Interior"></div>
+  <div class="hero-content container">
+    <span class="section-label">Symmetry Interiors</span>
+    <h1>Timeless Spaces.<br>Exceptional Living.</h1>
+    <p>Luxury interiors, bespoke furniture and globally sourced pieces crafted to transform extraordinary spaces.</p>
+    <div class="hero-buttons">
+      <a routerLink="/shop" class="sym-btn">Explore Collection</a>
+      <a routerLink="/contact" class="sym-btn sym-btn-outline">Start Your Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. About Symmetry Interiors -->
+<section class="section-padding about-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="about-image"><img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800&q=80" alt="Symmetry Interior Design"></div>
+      </div>
+      <div class="col-lg-6">
+        <span class="section-label">The Symmetry Experience</span>
+        <h2 class="section-title">Where timeless design meets exceptional craftsmanship.</h2>
+        <p class="section-description">Symmetry Interiors creates refined spaces that combine architectural design, bespoke furniture and global sourcing expertise. Every project is a collaboration — shaped by your vision and realised through our craft.</p>
+        <div class="about-stats row g-3 mt-4 mb-4">
+          <div class="col-4"><div class="stat"><strong>12+</strong><span>Years of Excellence</span></div></div>
+          <div class="col-4"><div class="stat"><strong>500+</strong><span>Projects Completed</span></div></div>
+          <div class="col-4"><div class="stat"><strong>5</strong><span>Global Sources</span></div></div>
+        </div>
+        <a routerLink="/about" class="sym-btn">Discover Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Featured Furniture Collections -->
+<section class="section-padding collections-section">
+  <div class="container">
+    <div class="section-heading text-center">
+      <span class="section-label">Explore</span>
+      <h2 class="section-title">Curated Collections</h2>
+    </div>
+    <div class="row g-4 mt-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let collection of collections">
+        <a routerLink="/shop" class="collection-card">
+          <img [src]="collection.image" [alt]="collection.name">
+          <div class="collection-info"><h3>{{collection.name}}</h3><span>Explore Collection →</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Shop by Category -->
+<section class="section-padding category-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-label">Discover</span>
+      <h2 class="section-title">Shop By Category</h2>
+    </div>
+    <div class="category-grid">
+      <a *ngFor="let category of categories" routerLink="/shop" class="category-item">
+        <img [src]="category.image" [alt]="category.name">
+        <div class="category-name">{{category.name}}</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Featured Products -->
+<section class="section-padding products-section">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-5">
+      <div><span class="section-label">Our Selection</span><h2 class="section-title mb-0">Featured Products</h2></div>
+      <a routerLink="/shop" class="view-link">View All →</a>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-sm-6 col-lg-3" *ngFor="let product of products">
+        <div class="product-card">
+          <div class="product-image">
+            <img [src]="product.image" [alt]="product.name">
+            <button class="wishlist" aria-label="Wishlist"><i class="bi bi-heart"></i></button>
+          </div>
+          <div class="product-info">
+            <span>{{product.category}}</span>
+            <h3>{{product.name}}</h3>
+            <p>₹{{product.price | number}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Featured Projects -->
+<section class="section-padding projects-section">
+  <div class="container">
+    <div class="section-heading text-center">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="projects-grid">
+      <a *ngFor="let project of projects" routerLink="/projects" class="project-card">
+        <img [src]="project.image" [alt]="project.name">
+        <div class="project-info">
+          <span>{{project.category}}</span>
+          <h3>{{project.name}}</h3>
+          <p>{{project.location}}</p>
+        </div>
+      </a>
+    </div>
+    <div class="text-center mt-5"><a routerLink="/projects" class="sym-btn sym-btn-outline-dark">View All Projects</a></div>
+  </div>
+</section>
+
+<!-- 7. Global Sourcing Expertise -->
+<section class="section-padding sourcing-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="section-label">Around The World</span>
+        <h2 class="section-title">Global Sourcing Expertise</h2>
+        <p class="section-description">Discover exceptional furniture and decorative pieces sourced from some of the world's most renowned design destinations. We travel the world so you don't have to.</p>
+        <div class="country-list"><span *ngFor="let country of countries">{{country}}</span></div>
+        <a routerLink="/global-sourcing" class="sym-btn mt-4">Explore Our Sourcing</a>
+      </div>
+      <div class="col-lg-6"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Global Furniture Sourcing"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Why Choose Us -->
+<section class="section-padding why-section">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">The Difference</span>
+      <h2 class="section-title">Why Choose Symmetry</h2>
+    </div>
+    <div class="row g-4 mt-4">
+      <div class="col-md-6 col-lg-3" *ngFor="let reason of reasons">
+        <div class="reason-card">
+          <i class="bi" [ngClass]="reason.icon"></i>
+          <h3>{{reason.title}}</h3>
+          <p>{{reason.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Client Testimonials -->
+<section class="section-padding testimonial-section">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">Client Stories</span>
+      <h2 class="section-title">What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-wrapper">
+      <div class="testimonial-body">
+        <i class="bi bi-quote"></i>
+        <p>"{{testimonials[activeTestimonial].quote}}"</p>
+        <strong>{{testimonials[activeTestimonial].author}}</strong>
+        <span class="testimonial-project">{{testimonials[activeTestimonial].project}}</span>
+      </div>
+      <div class="testimonial-dots">
+        <button *ngFor="let t of testimonials; let i = index"
+          [class.active]="i === activeTestimonial"
+          (click)="setTestimonial(i)"
+          [attr.aria-label]="'Testimonial ' + (i + 1)">
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Blog Highlights -->
+<section class="section-padding blog-section">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-5">
+      <div><span class="section-label">The Journal</span><h2 class="section-title mb-0">From Our Blog</h2></div>
+      <a routerLink="/blog" class="view-link">Read All →</a>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let post of blogPosts">
+        <a [routerLink]="['/blog', post.id]" class="blog-card">
+          <div class="blog-image"><img [src]="post.image" [alt]="post.title"></div>
+          <div class="blog-info">
+            <div class="blog-meta"><span class="blog-category">{{post.category}}</span><span class="blog-date">{{post.date}}</span></div>
+            <h3>{{post.title}}</h3>
+            <p>{{post.excerpt}}</p>
+            <span class="read-more">Read Article →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. Instagram Feed -->
+<section class="instagram-section">
+  <div class="instagram-header">
+    <span class="section-label">Follow Our Work</span>
+    <h2 class="section-title">&#64;symmetryinteriors</h2>
+    <a href="https://instagram.com" target="_blank" rel="noopener" class="insta-follow"><i class="bi bi-instagram"></i> Follow on Instagram</a>
+  </div>
+  <div class="instagram-grid">
+    <a *ngFor="let post of instagramPosts" href="https://instagram.com" target="_blank" rel="noopener" class="insta-post">
+      <img [src]="post.image" [alt]="post.alt">
+      <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+    </a>
+  </div>
+</section>
+
+<!-- 12. Call-to-Action -->
+<section class="final-cta">
+  <div class="container text-center">
+    <span class="section-label">Begin Your Journey</span>
+    <h2>Let's Create Something Extraordinary.</h2>
+    <p>From concept to completion, let us transform your vision into a timeless space.</p>
+    <div class="cta-buttons">
+      <a routerLink="/contact" class="sym-btn">Start Your Project</a>
+      <a routerLink="/shop" class="sym-btn sym-btn-outline">Browse Collection</a>
+    </div>
+  </div>
+</section>
+
+<!-- 13. Contact Information -->
+<section class="section-padding contact-strip">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-md-4">
+        <div class="contact-item">
+          <i class="bi bi-geo-alt"></i>
+          <h4>Visit Us</h4>
+          <p>Banjara Hills, Hyderabad<br>Telangana, India</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-item">
+          <i class="bi bi-telephone"></i>
+          <h4>Call Us</h4>
+          <p>+91 XXXXX XXXXX<br>Mon – Sat, 10am – 7pm</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-item">
+          <i class="bi bi-envelope"></i>
+          <h4>Email Us</h4>
+          <p>info&#64;symmetryinteriors.com<br>We respond within 24 hours</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+<!-- Hero -->
+<section class="blog-hero">
+  <div class="container">
+    <span class="section-label">The Journal</span>
+    <h1>Ideas &amp; Inspiration</h1>
+    <p>Stories, guides and insights from the world of interiors, furniture and design.</p>
+  </div>
+</section>
+
+<!-- Featured Posts -->
+<section class="section-padding featured-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-label">Editor's Picks</span>
+      <h2 class="section-title">Featured Articles</h2>
+    </div>
+    <div class="featured-grid mt-5">
+      <!-- Large featured -->
+      <a [routerLink]="['/blog', featured()[0].id]" class="featured-main">
+        <div class="featured-image">
+          <img [src]="featured()[0].image" [alt]="featured()[0].title">
+          <div class="featured-overlay"></div>
+        </div>
+        <div class="featured-info">
+          <span class="post-category">{{featured()[0].category}}</span>
+          <h3>{{featured()[0].title}}</h3>
+          <p>{{featured()[0].excerpt}}</p>
+          <div class="post-meta"><span>{{featured()[0].date}}</span><span>{{featured()[0].readTime}}</span></div>
+        </div>
+      </a>
+      <!-- Side stack -->
+      <div class="featured-stack">
+        <a *ngFor="let post of featured().slice(1)" [routerLink]="['/blog', post.id]" class="featured-side">
+          <div class="side-image"><img [src]="post.image" [alt]="post.title" loading="lazy"></div>
+          <div class="side-info">
+            <span class="post-category">{{post.category}}</span>
+            <h4>{{post.title}}</h4>
+            <div class="post-meta"><span>{{post.date}}</span><span>{{post.readTime}}</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- All Posts with Filter -->
+<section class="section-padding all-posts-section">
+  <div class="container">
+
+    <!-- Category filter tabs -->
+    <div class="category-tabs">
+      <button *ngFor="let cat of categories"
+        class="tab-btn" [class.active]="activeCategory()===cat"
+        (click)="setCategory(cat)">
+        {{cat}} <span>{{count(cat)}}</span>
+      </button>
+    </div>
+
+    <!-- Posts grid -->
+    <div class="posts-grid mt-5">
+      <article class="post-card" *ngFor="let post of filtered()">
+        <a [routerLink]="['/blog', post.id]" class="post-image">
+          <img [src]="post.image" [alt]="post.title" loading="lazy">
+          <span class="post-cat-badge">{{post.category}}</span>
+        </a>
+        <div class="post-body">
+          <div class="post-meta">
+            <span>{{post.date}}</span>
+            <span class="dot">·</span>
+            <span>{{post.readTime}}</span>
+          </div>
+          <h3><a [routerLink]="['/blog', post.id]">{{post.title}}</a></h3>
+          <p>{{post.excerpt}}</p>
+          <a [routerLink]="['/blog', post.id]" class="read-link">Read Article <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Empty state -->
+    <div class="no-posts" *ngIf="filtered().length === 0">
+      <p>No articles in this category yet.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="nl-text">
+        <span class="section-label">Stay Inspired</span>
+        <h2>Get the latest from our journal.</h2>
+        <p>New articles on design, sourcing and lifestyle delivered monthly.</p>
+      </div>
+      <form class="nl-form" (submit)="$event.preventDefault()">
+        <input type="email" placeholder="Your email address" aria-label="Email address">
+        <button type="submit" class="sym-btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>

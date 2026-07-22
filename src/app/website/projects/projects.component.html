@@ -1,0 +1,100 @@
+<!-- Hero -->
+<section class="projects-hero">
+  <div class="projects-hero-image">
+    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=85" alt="Symmetry Interiors Projects">
+  </div>
+  <div class="projects-hero-content container">
+    <span class="section-label">Our Work</span>
+    <h1>Projects &amp;<br>Portfolio</h1>
+    <p>A collection of spaces shaped by architecture, materials and thoughtful design — each one a collaboration with a client who believes in the power of great interiors.</p>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item" *ngFor="let stat of stats">
+        <strong>{{stat.number}}</strong>
+        <span>{{stat.label}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Category Filter -->
+<section class="section-padding projects-listing">
+  <div class="container">
+
+    <div class="filter-bar">
+      <button *ngFor="let cat of categories"
+        class="filter-btn"
+        [class.active]="activeCategory() === cat"
+        (click)="setCategory(cat)">
+        {{cat}}
+        <span class="filter-count">{{count(cat)}}</span>
+      </button>
+    </div>
+
+    <!-- Category label -->
+    <div class="category-heading" *ngIf="activeCategory() !== 'All'">
+      <div class="cat-line"></div>
+      <h2>{{activeCategory()}} Projects</h2>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="projects-grid" *ngIf="filtered().length > 0">
+      <ng-container *ngFor="let project of filtered(); let i = index">
+
+        <!-- Featured card (wide) -->
+        <a *ngIf="project.featured && activeCategory() === 'All'"
+          [routerLink]="['/projects', project.id]"
+          class="project-card project-card--featured">
+          <div class="project-img-wrap">
+            <img [src]="project.image" [alt]="project.name" loading="lazy">
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-info">
+            <span class="project-cat">{{project.category}}</span>
+            <h3>{{project.name}}</h3>
+            <p class="project-meta">{{project.location}} &nbsp;·&nbsp; {{project.year}} &nbsp;·&nbsp; {{project.area}}</p>
+            <span class="project-cta">View Project →</span>
+          </div>
+        </a>
+
+        <!-- Regular card -->
+        <a *ngIf="!project.featured || activeCategory() !== 'All'"
+          [routerLink]="['/projects', project.id]"
+          class="project-card">
+          <div class="project-img-wrap">
+            <img [src]="project.image" [alt]="project.name" loading="lazy">
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-info">
+            <span class="project-cat">{{project.category}}</span>
+            <h3>{{project.name}}</h3>
+            <p class="project-meta">{{project.location}} &nbsp;·&nbsp; {{project.year}} &nbsp;·&nbsp; {{project.area}}</p>
+            <span class="project-cta">View Project →</span>
+          </div>
+        </a>
+
+      </ng-container>
+    </div>
+
+    <!-- No results -->
+    <div class="no-projects" *ngIf="filtered().length === 0">
+      <p>No projects found in this category.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="projects-cta">
+  <div class="container text-center">
+    <span class="section-label">Work With Us</span>
+    <h2>Have a Project in Mind?</h2>
+    <p>Tell us about your space and we'll help you realise its full potential.</p>
+    <a routerLink="/contact" class="sym-btn">Start a Conversation</a>
+  </div>
+</section>

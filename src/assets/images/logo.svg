@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" fill="none">
+  <defs>
+    <linearGradient id="symGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B9E9E"/>
+      <stop offset="100%" stop-color="#3A5F6F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer square -->
+  <rect x="148" y="8"  width="104" height="104" rx="2" stroke="url(#symGrad)" stroke-width="3.5" fill="none"/>
+  <!-- Second square -->
+  <rect x="157" y="17" width="86"  height="86"  rx="2" stroke="url(#symGrad)" stroke-width="2.8" fill="none"/>
+  <!-- Third square -->
+  <rect x="166" y="26" width="68"  height="68"  rx="2" stroke="url(#symGrad)" stroke-width="2.2" fill="none"/>
+  <!-- Fourth square -->
+  <rect x="175" y="35" width="50"  height="50"  rx="2" stroke="url(#symGrad)" stroke-width="1.8" fill="none"/>
+
+  <!-- S letterform inside — top horizontal -->
+  <rect x="175" y="35" width="50" height="9"  fill="url(#symGrad)" rx="1"/>
+  <!-- S left side top -->
+  <rect x="175" y="35" width="9"  height="28" fill="url(#symGrad)" rx="1"/>
+  <!-- S middle bar -->
+  <rect x="175" y="55" width="50" height="9"  fill="url(#symGrad)" rx="1"/>
+  <!-- S right side bottom -->
+  <rect x="216" y="55" width="9"  height="28" fill="url(#symGrad)" rx="1"/>
+  <!-- S bottom horizontal -->
+  <rect x="175" y="76" width="50" height="9"  fill="url(#symGrad)" rx="1"/>
+
+  <!-- SYMMETRY wordmark -->
+  <text
+    x="200"
+    y="148"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="30"
+    font-weight="300"
+    letter-spacing="10"
+    text-anchor="middle"
+    fill="url(#symGrad)">SYMMETRY</text>
+
+  <!-- INTERIORS subtext -->
+  <text
+    x="200"
+    y="172"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="10"
+    font-weight="300"
+    letter-spacing="6"
+    text-anchor="middle"
+    fill="url(#symGrad)"
+    opacity="0.75">INTERIORS</text>
+</svg>

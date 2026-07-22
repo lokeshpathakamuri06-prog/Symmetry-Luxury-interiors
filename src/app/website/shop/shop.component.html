@@ -1,0 +1,116 @@
+<!-- Hero -->
+<section class="shop-hero">
+  <div class="container">
+    <span class="section-label">The Collection</span>
+    <h1>Shop Furniture &amp; Decor</h1>
+    <p>Curated furniture, lighting and objects for refined interiors.</p>
+  </div>
+</section>
+
+<div class="shop-layout">
+
+  <!-- Sidebar -->
+  <aside class="shop-sidebar" [class.open]="sidebarOpen">
+    <div class="sidebar-header">
+      <h3>Categories</h3>
+      <button class="sidebar-close" (click)="sidebarOpen=false" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <ul class="category-list">
+      <li *ngFor="let cat of categories">
+        <button [class.active]="activeCategory()===cat" (click)="setCategory(cat);sidebarOpen=false">
+          {{cat}}
+          <span class="cat-count">{{cat==='All' ? allProducts.length : allProducts | filterCategory:cat}}</span>
+        </button>
+      </li>
+    </ul>
+  </aside>
+  <div class="sidebar-overlay" [class.active]="sidebarOpen" (click)="sidebarOpen=false"></div>
+
+  <!-- Main content -->
+  <main class="shop-main">
+
+    <!-- Toolbar -->
+    <div class="shop-toolbar">
+      <button class="filter-toggle" (click)="sidebarOpen=true">
+        <i class="bi bi-sliders"></i> Filters
+        <span class="active-filter-badge" *ngIf="activeCategory()!=='All'">1</span>
+      </button>
+
+      <div class="search-wrap">
+        <i class="bi bi-search"></i>
+        <input type="search" placeholder="Search products..." [value]="search()" (input)="setSearch($any($event.target).value)" aria-label="Search products">
+      </div>
+
+      <div class="toolbar-right">
+        <span class="result-count">{{filtered().length}} products</span>
+        <div class="sort-wrap">
+          <label for="sort-select">Sort by:</label>
+          <select id="sort-select" [value]="sortBy()" (change)="setSort($any($event.target).value)">
+            <option *ngFor="let opt of sortOptions" [value]="opt.value">{{opt.label}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active filter pill -->
+    <div class="active-filters" *ngIf="activeCategory()!=='All'">
+      <span class="filter-pill">
+        {{activeCategory()}}
+        <button (click)="setCategory('All')" aria-label="Remove filter"><i class="bi bi-x"></i></button>
+      </span>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid" *ngIf="paginated().length > 0; else noResults">
+      <article class="product-card" *ngFor="let product of paginated()">
+        <a [routerLink]="['/product', product.id]" class="product-image">
+          <img [src]="product.image" [alt]="product.name" loading="lazy">
+          <span class="product-badge" *ngIf="product.badge">{{product.badge}}</span>
+          <div class="product-actions">
+            <button type="button" class="action-btn" aria-label="Add to Wishlist"><i class="bi bi-heart"></i></button>
+            <button type="button" class="action-btn" aria-label="Quick View"><i class="bi bi-eye"></i></button>
+          </div>
+        </a>
+        <div class="product-info">
+          <span class="product-category">{{product.category}}</span>
+          <h3><a [routerLink]="['/product', product.id]">{{product.name}}</a></h3>
+          <div class="product-rating">
+            <i class="bi bi-star-fill" *ngFor="let s of stars(product.rating)"></i>
+            <span>({{product.reviews}})</span>
+          </div>
+          <div class="product-price">
+            <strong>₹{{product.price | number}}</strong>
+            <s *ngIf="product.originalPrice">₹{{product.originalPrice | number}}</s>
+          </div>
+          <a [routerLink]="['/product', product.id]" class="add-cart-btn">View Details</a>
+        </div>
+      </article>
+    </div>
+
+    <ng-template #noResults>
+      <div class="no-results">
+        <i class="bi bi-search"></i>
+        <h3>No products found</h3>
+        <p>Try a different search term or category.</p>
+        <button class="sym-btn" (click)="setCategory('All');setSearch('')">Clear Filters</button>
+      </div>
+    </ng-template>
+
+    <!-- Pagination -->
+    <nav class="pagination-bar" *ngIf="totalPages() > 1" aria-label="Product pages">
+      <button class="page-btn" (click)="goToPage(currentPage()-1)" [disabled]="currentPage()===1" aria-label="Previous page">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button class="page-btn" *ngFor="let p of pages()"
+        [class.active]="p===currentPage()"
+        (click)="goToPage(p)"
+        [attr.aria-current]="p===currentPage() ? 'page' : null">
+        {{p}}
+      </button>
+      <button class="page-btn" (click)="goToPage(currentPage()+1)" [disabled]="currentPage()===totalPages()" aria-label="Next page">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </nav>
+
+  </main>
+</div>

@@ -1,0 +1,88 @@
+/* Hero */
+.page-hero{min-height:70vh;position:relative;display:flex;align-items:flex-end;padding:180px 0 90px}
+.page-hero-image{position:absolute;inset:0}
+.page-hero-image img{width:100%;height:100%;object-fit:cover}
+.page-hero-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.3) 60%,rgba(0,0,0,0.1) 100%)}
+.page-hero-content{position:relative;z-index:2}
+.page-hero-content .section-label{color:rgba(255,255,255,0.85)}
+.page-hero-content h1{font-size:clamp(50px,7vw,90px);line-height:.95;max-width:750px;color:#fff;margin-bottom:25px}
+.page-hero-content p{max-width:600px;color:rgba(255,255,255,0.85);line-height:1.8;font-size:16px}
+
+/* Company Story */
+.story-image{width:100%;height:650px;object-fit:cover}
+.stats-row{display:flex;gap:40px;margin-top:45px;flex-wrap:wrap;border-top:1px solid var(--sym-border);padding-top:40px}
+.stat-item strong{display:block;font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--sym-gold);line-height:1}
+.stat-item span{font-size:11px;color:var(--sym-grey);text-transform:uppercase;letter-spacing:1px;margin-top:8px;display:block}
+
+/* Legacy & Timeline */
+.legacy-section{background:var(--sym-ivory)}
+.timeline{position:relative;padding-left:20px}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--sym-border)}
+.timeline-item{display:flex;gap:35px;margin-bottom:45px;position:relative}
+.timeline-item::before{content:'';position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--sym-gold);border:2px solid #fff;outline:1px solid var(--sym-gold)}
+.timeline-year{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--sym-gold);min-width:60px;line-height:1.2}
+.timeline-content h4{font-size:20px;margin-bottom:8px}
+.timeline-content p{font-size:14px;color:var(--sym-grey);line-height:1.7;margin:0}
+
+/* Mission & Vision */
+.mv-card{padding:45px 40px;height:100%;border:1px solid var(--sym-border)}
+.mission-card{background:var(--sym-ivory)}
+.vision-card{background:var(--sym-beige)}
+.mv-icon{margin-bottom:25px}
+.mv-icon i{font-size:36px;color:var(--sym-gold)}
+.mv-card h3{font-size:32px;margin-bottom:18px}
+.mv-card p{color:var(--sym-grey);line-height:1.8;margin-bottom:20px}
+.mv-card ul{list-style:none;padding:0;margin:0}
+.mv-card ul li{padding:8px 0;font-size:14px;color:var(--sym-grey);border-bottom:1px solid var(--sym-border);display:flex;align-items:center;gap:10px}
+.mv-card ul li::before{content:'→';color:var(--sym-gold);flex-shrink:0}
+.mission-image-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:60px}
+.mission-image-strip img{width:100%;height:280px;object-fit:cover}
+
+/* Team */
+.team-section{background:var(--sym-ivory)}
+.team-card{overflow:hidden}
+.team-image{overflow:hidden}
+.team-image img{width:100%;height:380px;object-fit:cover;object-position:top;transition:.5s}
+.team-card:hover .team-image img{transform:scale(1.05)}
+.team-info{padding:25px 0}
+.team-info h4{font-size:26px;margin-bottom:4px}
+.team-role{font-size:11px;color:var(--sym-gold);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:12px}
+.team-info p{font-size:14px;color:var(--sym-grey);line-height:1.7;margin:0}
+
+/* Why Choose */
+.reason-card{padding:40px 35px;border-top:1px solid var(--sym-border);height:100%;transition:.3s}
+.reason-card:hover{background:var(--sym-ivory)}
+.reason-card i{font-size:32px;color:var(--sym-gold)}
+.reason-card h3{font-size:26px;margin:22px 0 14px}
+.reason-card p{color:var(--sym-grey);line-height:1.7;font-size:14px;margin:0}
+
+/* CTA */
+.about-cta{padding:120px 20px;background:var(--sym-dark)}
+.about-cta .section-label{color:var(--sym-gold)}
+.about-cta h2{font-size:clamp(40px,6vw,75px);color:#fff;margin-bottom:20px}
+.about-cta p{color:rgba(255,255,255,0.7);margin-bottom:0;font-size:16px;line-height:1.8}
+.cta-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+
+/* Responsive */
+@media(max-width:991px){
+  .page-hero{min-height:auto;padding:140px 0 80px}
+  .story-image{height:450px}
+  .mission-image-strip{grid-template-columns:repeat(2,1fr)}
+  .mission-image-strip img{height:220px}
+  .timeline-item{gap:20px}
+}
+@media(max-width:768px){
+  .page-hero-content h1{font-size:52px}
+  .stats-row{gap:25px}
+  .mv-card{padding:30px 25px}
+  .team-image img{height:320px}
+  .mission-image-strip{grid-template-columns:1fr 1fr}
+}
+@media(max-width:576px){
+  .stats-row{gap:20px}
+  .stat-item strong{font-size:40px}
+  .mission-image-strip{grid-template-columns:1fr}
+  .cta-buttons{flex-direction:column}
+  .cta-buttons a{width:100%}
+  .timeline-year{font-size:22px;min-width:50px}
+}

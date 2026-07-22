@@ -1,0 +1,141 @@
+<div class="project-detail-page" *ngIf="project">
+
+  <!-- Hero -->
+  <section class="detail-hero">
+    <div class="detail-hero-image">
+      <img [src]="project.heroImage" [alt]="project.name">
+    </div>
+    <div class="detail-hero-content container">
+      <a routerLink="/projects" class="back-link"><i class="bi bi-arrow-left"></i> All Projects</a>
+      <span class="project-cat-label">{{project.category}}</span>
+      <h1>{{project.name}}</h1>
+      <p class="hero-tagline">{{project.tagline}}</p>
+    </div>
+  </section>
+
+  <!-- Project meta strip -->
+  <div class="meta-strip">
+    <div class="container">
+      <div class="meta-inner">
+        <div class="meta-item"><span>Location</span><strong>{{project.location}}</strong></div>
+        <div class="meta-item"><span>Year</span><strong>{{project.year}}</strong></div>
+        <div class="meta-item"><span>Area</span><strong>{{project.area}}</strong></div>
+        <div class="meta-item"><span>Duration</span><strong>{{project.duration}}</strong></div>
+        <div class="meta-item"><span>Client</span><strong>{{project.client}}</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Project Description -->
+    <section class="section-padding description-section">
+      <div class="row g-5 align-items-start">
+        <div class="col-lg-4">
+          <div class="desc-sidebar">
+            <span class="section-label">The Project</span>
+            <h2 class="section-title">Project Description</h2>
+            <div class="highlights-list">
+              <div class="highlight-item" *ngFor="let h of project.highlights">
+                <i class="bi bi-check2"></i>
+                <span>{{h}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="desc-body">
+            <p *ngFor="let para of project.description" class="desc-para">{{para}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="gallery-section">
+      <div class="gallery-header">
+        <span class="section-label">Photography</span>
+        <h2 class="section-title">Project Gallery</h2>
+      </div>
+      <div class="gallery-grid">
+        <!-- First image — wide hero -->
+        <div class="gallery-item gallery-item--hero" (click)="openLightbox(0)">
+          <img [src]="project.gallery[0].src" [alt]="project.gallery[0].caption" loading="lazy">
+          <div class="gallery-hover"><i class="bi bi-arrows-fullscreen"></i></div>
+          <div class="gallery-caption">{{project.gallery[0].caption}}</div>
+        </div>
+        <!-- Rest of images -->
+        <div *ngFor="let img of project.gallery.slice(1); let i = index"
+          class="gallery-item" (click)="openLightbox(i + 1)">
+          <img [src]="img.src" [alt]="img.caption" loading="lazy">
+          <div class="gallery-hover"><i class="bi bi-arrows-fullscreen"></i></div>
+          <div class="gallery-caption">{{img.caption}}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scope of Work -->
+    <section class="section-padding scope-section">
+      <div class="scope-header">
+        <span class="section-label">What We Did</span>
+        <h2 class="section-title">Scope of Work</h2>
+      </div>
+      <div class="scope-grid">
+        <div class="scope-card" *ngFor="let item of project.scope">
+          <div class="scope-icon"><i class="bi" [ngClass]="item.icon"></i></div>
+          <h4>{{item.title}}</h4>
+          <p>{{item.detail}}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materials Used -->
+    <section class="section-padding materials-section">
+      <div class="materials-header">
+        <span class="section-label">Specification</span>
+        <h2 class="section-title">Materials Used</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" *ngFor="let group of project.materials">
+          <div class="material-group">
+            <h4>{{group.category}}</h4>
+            <ul>
+              <li *ngFor="let item of group.items">
+                <i class="bi bi-dot"></i>{{item}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- Lightbox -->
+  <div class="lightbox" *ngIf="lightboxOpen" (click)="closeLightbox()" role="dialog" aria-modal="true" aria-label="Image gallery">
+    <div class="lightbox-inner" (click)="$event.stopPropagation()">
+      <button class="lb-close" (click)="closeLightbox()" aria-label="Close lightbox"><i class="bi bi-x-lg"></i></button>
+      <button class="lb-nav lb-prev" (click)="prevSlide()" aria-label="Previous image"><i class="bi bi-chevron-left"></i></button>
+      <div class="lb-img-wrap">
+        <img [src]="project.gallery[lightboxIndex].src" [alt]="project.gallery[lightboxIndex].caption">
+        <p class="lb-caption">{{project.gallery[lightboxIndex].caption}}</p>
+        <span class="lb-counter">{{lightboxIndex + 1}} / {{project.gallery.length}}</span>
+      </div>
+      <button class="lb-nav lb-next" (click)="nextSlide()" aria-label="Next image"><i class="bi bi-chevron-right"></i></button>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="detail-cta">
+    <div class="container text-center">
+      <span class="section-label">Start Your Project</span>
+      <h2>Inspired by What You've Seen?</h2>
+      <p>Let's talk about how we can create something extraordinary for your space.</p>
+      <div class="cta-buttons">
+        <a routerLink="/contact" class="sym-btn">Discuss Your Project</a>
+        <a routerLink="/projects" class="sym-btn sym-btn-outline-dark">View More Projects</a>
+      </div>
+    </div>
+  </section>
+
+</div>

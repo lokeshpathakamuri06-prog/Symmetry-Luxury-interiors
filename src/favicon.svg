@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B9E9E"/>
+      <stop offset="100%" stop-color="#3A5F6F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer square -->
+  <rect x="2"  y="2"  width="60" height="60" rx="4" stroke="url(#g)" stroke-width="2.5" fill="none"/>
+  <!-- Second square -->
+  <rect x="8"  y="8"  width="48" height="48" rx="3" stroke="url(#g)" stroke-width="2"   fill="none"/>
+  <!-- Third square -->
+  <rect x="14" y="14" width="36" height="36" rx="2" stroke="url(#g)" stroke-width="1.5" fill="none"/>
+
+  <!-- S letterform -->
+  <!-- Top bar -->
+  <rect x="16" y="16" width="32" height="7" rx="1" fill="url(#g)"/>
+  <!-- Left side top -->
+  <rect x="16" y="16" width="7"  height="18" rx="1" fill="url(#g)"/>
+  <!-- Middle bar -->
+  <rect x="16" y="28" width="32" height="7" rx="1" fill="url(#g)"/>
+  <!-- Right side bottom -->
+  <rect x="41" y="28" width="7"  height="18" rx="1" fill="url(#g)"/>
+  <!-- Bottom bar -->
+  <rect x="16" y="41" width="32" height="7" rx="1" fill="url(#g)"/>
+</svg>

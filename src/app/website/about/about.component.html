@@ -1,0 +1,158 @@
+<!-- Hero -->
+<section class="page-hero">
+  <div class="page-hero-image">
+    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=85" alt="Symmetry Interiors">
+  </div>
+  <div class="page-hero-content container">
+    <span class="section-label">Our Story</span>
+    <h1>Crafting Spaces.<br>Defining Legacies.</h1>
+    <p>We create refined interiors, bespoke furniture and globally sourced pieces that bring together architecture, craftsmanship and timeless living.</p>
+  </div>
+</section>
+
+<!-- 1. Company Story -->
+<section class="section-padding story-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <img class="story-image" src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800&q=80" alt="Our Story">
+      </div>
+      <div class="col-lg-6">
+        <span class="section-label">Company Story</span>
+        <h2 class="section-title">Where It All Began</h2>
+        <p class="section-description">Symmetry Interiors was founded with a singular vision — to create spaces that transcend trends and stand the test of time. Born from a deep appreciation of architecture, materiality and craftsmanship, we have grown from a boutique design studio into one of India's most trusted names in luxury interiors.</p>
+        <p class="section-description mt-3">Every project we undertake is a reflection of our belief that great design is not merely decorative — it is transformative. We shape environments that inspire, comfort and endure.</p>
+        <div class="stats-row">
+          <div class="stat-item" *ngFor="let stat of stats">
+            <strong>{{stat.number}}</strong>
+            <span>{{stat.label}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Legacy & Experience — 25+ Years of Global Sourcing -->
+<section class="section-padding legacy-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <span class="section-label">Legacy & Experience</span>
+        <h2 class="section-title">25+ Years of Global Sourcing</h2>
+        <p class="section-description">For over two and a half decades, we have cultivated exclusive relationships with the world's finest furniture makers, textile artisans and material suppliers. Our sourcing network spans five continents and gives our clients access to pieces that are simply unavailable elsewhere in India.</p>
+        <a routerLink="/global-sourcing" class="sym-btn mt-4">Explore Global Sourcing</a>
+      </div>
+      <div class="col-lg-7">
+        <div class="timeline">
+          <div class="timeline-item" *ngFor="let milestone of milestones">
+            <div class="timeline-year">{{milestone.year}}</div>
+            <div class="timeline-content">
+              <h4>{{milestone.title}}</h4>
+              <p>{{milestone.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Mission & Vision -->
+<section class="section-padding mission-section">
+  <div class="container">
+    <div class="section-heading text-center">
+      <span class="section-label">Our Purpose</span>
+      <h2 class="section-title">Mission & Vision</h2>
+    </div>
+    <div class="row g-5 mt-3">
+      <div class="col-lg-6">
+        <div class="mv-card mission-card">
+          <div class="mv-icon"><i class="bi bi-bullseye"></i></div>
+          <h3>Our Mission</h3>
+          <p>To transform living and working spaces through thoughtful design, exceptional craftsmanship and globally sourced materials — creating interiors that reflect the unique identity and aspirations of every client.</p>
+          <ul>
+            <li>Deliver end-to-end interior solutions with precision</li>
+            <li>Source the finest materials from around the world</li>
+            <li>Exceed client expectations at every touchpoint</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mv-card vision-card">
+          <div class="mv-icon"><i class="bi bi-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>To be India's most respected luxury interior design and sourcing company — known for creating timeless spaces, fostering lasting relationships and setting new standards in design excellence.</p>
+          <ul>
+            <li>Pioneer design innovation across all project types</li>
+            <li>Build enduring partnerships with clients and craftsmen</li>
+            <li>Lead the industry in sustainable luxury design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mission-image-strip">
+      <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=500&q=80" alt="Residential interior">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80" alt="Commercial interior">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80" alt="Bedroom design">
+      <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=500&q=80" alt="Dining space">
+    </div>
+  </div>
+</section>
+
+<!-- 4. Our Team -->
+<section class="section-padding team-section">
+  <div class="container">
+    <div class="section-heading text-center">
+      <span class="section-label">The People</span>
+      <h2 class="section-title">Meet Our Team</h2>
+      <p class="section-description mx-auto mt-3" style="max-width:600px">A collective of designers, architects, sourcing specialists and project managers united by a passion for exceptional interiors.</p>
+    </div>
+    <div class="row g-4 mt-4">
+      <div class="col-sm-6 col-lg-3" *ngFor="let member of team">
+        <div class="team-card">
+          <div class="team-image">
+            <img [src]="member.image" [alt]="member.name">
+          </div>
+          <div class="team-info">
+            <h4>{{member.name}}</h4>
+            <span class="team-role">{{member.role}}</span>
+            <p>{{member.bio}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Why Choose Symmetry -->
+<section class="section-padding why-section">
+  <div class="container">
+    <div class="section-heading text-center">
+      <span class="section-label">The Difference</span>
+      <h2 class="section-title">Why Choose Symmetry</h2>
+    </div>
+    <div class="row g-4 mt-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let reason of reasons">
+        <div class="reason-card">
+          <i class="bi" [ngClass]="reason.icon"></i>
+          <h3>{{reason.title}}</h3>
+          <p>{{reason.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+  <div class="container text-center">
+    <span class="section-label">Work With Us</span>
+    <h2>Ready to Begin Your Project?</h2>
+    <p>Let's talk about your vision. Our team is ready to bring it to life.</p>
+    <div class="cta-buttons">
+      <a routerLink="/contact" class="sym-btn">Start a Conversation</a>
+      <a routerLink="/projects" class="sym-btn sym-btn-outline">View Our Projects</a>
+    </div>
+  </div>
+</section>

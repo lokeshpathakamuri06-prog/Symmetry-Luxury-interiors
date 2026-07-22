@@ -1,0 +1,4 @@
+<section class="page-hero"><div class="container"><span class="section-label">Need To Know</span><h1>Frequently Asked Questions</h1><p>Find answers to common questions about our interiors, furniture and sourcing services.</p></div></section>
+<section class="section-padding"><div class="container faq-wrap"><div class="accordion" id="faqAccordion">
+<div class="accordion-item" *ngFor="let item of faqs; let i=index"><h2 class="accordion-header"><button class="accordion-button" [class.collapsed]="i!==0" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#faq'+i">{{item.q}}</button></h2><div [id]="'faq'+i" class="accordion-collapse collapse" [class.show]="i===0" data-bs-parent="#faqAccordion"><div class="accordion-body">{{item.a}}</div></div></div>
+</div></div></section>
