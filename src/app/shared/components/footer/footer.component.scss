@@ -1,1 +1,85 @@
-.site-footer{background:#111;color:#fff}.footer-main{padding:80px 0}.footer-logo{width:160px;margin-bottom:25px}.footer-description{max-width:350px;color:#aaa;line-height:1.8}.site-footer h4{color:#fff;font-family:'Manrope',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:2px;margin-bottom:25px}.site-footer a{display:block;color:#aaa;margin-bottom:12px;font-size:13px}.site-footer a:hover{color:#fff}.social-links{display:flex;gap:15px;margin-top:25px}.social-links a{font-size:18px}.footer-bottom{border-top:1px solid #333;padding:25px 0}.footer-bottom-inner{display:flex;justify-content:space-between;align-items:center}.footer-bottom p{margin:0;color:#777;font-size:12px}.footer-bottom a{display:inline-block;margin-left:20px}@media(max-width:768px){.footer-main{padding:60px 0}.footer-bottom-inner{flex-direction:column;gap:15px;text-align:center}}
+.site-footer {
+    background: #111;
+    color: #fff
+}
+
+.footer-main {
+    padding: 80px 0
+}
+
+.footer-logo {
+    height: 120px;
+    width: auto;
+    margin-bottom: 25px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-description {
+    max-width: 350px;
+    color: #aaa;
+    line-height: 1.8
+}
+
+.site-footer h4 {
+    color: #fff;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px
+}
+
+.site-footer a {
+    display: block;
+    color: #aaa;
+    margin-bottom: 12px;
+    font-size: 13px
+}
+
+.site-footer a:hover {
+    color: #fff
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px
+}
+
+.social-links a {
+    font-size: 18px
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding: 25px 0
+}
+
+.footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #777;
+    font-size: 12px
+}
+
+.footer-bottom a {
+    display: inline-block;
+    margin-left: 20px
+}
+
+@media(max-width:768px) {
+    .footer-main {
+        padding: 60px 0
+    }
+
+    .footer-bottom-inner {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center
+    }
+}
