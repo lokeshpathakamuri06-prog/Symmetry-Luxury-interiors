@@ -1,5 +1,0 @@
-<div class="page"><div class="page-head"><div><span class="eyebrow">Content</span><h1 class="page-title">Media Library</h1><p class="page-subtitle">Manage images used across the website and CMS.</p></div><button class="primary-btn"><i class="bi bi-cloud-upload"></i> Upload Media</button></div><div class="toolbar"><input placeholder="Search media..."><select><option>All Types</option><option>Images</option><option>SVG</option></select></div><div class="media-grid">
-@for (file of ['hero-interior.svg','product-1.svg','project-1.svg','blog-1.svg']; track file) {
-<div class="media-card"><img [src]="'assets/images/'+file" [alt]="file"><div><strong>{{file}}</strong><small>Website asset · Ready</small></div><button class="icon-btn"><i class="bi bi-three-dots"></i></button></div>
-}
-</div></div>
