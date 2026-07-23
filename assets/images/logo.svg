@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 260" fill="none">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#7BBABA"/>
+      <stop offset="50%"  stop-color="#5A8A96"/>
+      <stop offset="100%" stop-color="#3D5F6E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ============================================================
+       ICON — 5 concentric squares forming an S letterform
+       The S is formed by:
+         top-left corner   = closed (top + left sides)
+         top-right corner  = open  (no right side top half)
+         middle bar        = full width
+         bottom-left corner= open  (no left side bottom half)
+         bottom-right corner = closed (right + bottom sides)
+       Each square shares the same S-cut pattern, getting smaller.
+       Stroke width decreases inward to create the layered effect.
+  ============================================================ -->
+
+  <!-- Square 1 — outermost -->
+  <!-- Top bar -->
+  <line x1="185" y1="10"  x2="315" y2="10"  stroke="url(#grad)" stroke-width="3.5" stroke-linecap="square"/>
+  <!-- Left side — top half only (top to middle) -->
+  <line x1="185" y1="10"  x2="185" y2="125" stroke="url(#grad)" stroke-width="3.5" stroke-linecap="square"/>
+  <!-- Middle bar — full width -->
+  <line x1="185" y1="125" x2="315" y2="125" stroke="url(#grad)" stroke-width="3.5" stroke-linecap="square"/>
+  <!-- Right side — bottom half only (middle to bottom) -->
+  <line x1="315" y1="125" x2="315" y2="240" stroke="url(#grad)" stroke-width="3.5" stroke-linecap="square"/>
+  <!-- Bottom bar -->
+  <line x1="185" y1="240" x2="315" y2="240" stroke="url(#grad)" stroke-width="3.5" stroke-linecap="square"/>
+
+  <!-- Square 2 -->
+  <line x1="196" y1="21"  x2="304" y2="21"  stroke="url(#grad)" stroke-width="2.8" stroke-linecap="square"/>
+  <line x1="196" y1="21"  x2="196" y2="125" stroke="url(#grad)" stroke-width="2.8" stroke-linecap="square"/>
+  <line x1="196" y1="125" x2="304" y2="125" stroke="url(#grad)" stroke-width="2.8" stroke-linecap="square"/>
+  <line x1="304" y1="125" x2="304" y2="229" stroke="url(#grad)" stroke-width="2.8" stroke-linecap="square"/>
+  <line x1="196" y1="229" x2="304" y2="229" stroke="url(#grad)" stroke-width="2.8" stroke-linecap="square"/>
+
+  <!-- Square 3 -->
+  <line x1="207" y1="32"  x2="293" y2="32"  stroke="url(#grad)" stroke-width="2.2" stroke-linecap="square"/>
+  <line x1="207" y1="32"  x2="207" y2="125" stroke="url(#grad)" stroke-width="2.2" stroke-linecap="square"/>
+  <line x1="207" y1="125" x2="293" y2="125" stroke="url(#grad)" stroke-width="2.2" stroke-linecap="square"/>
+  <line x1="293" y1="125" x2="293" y2="218" stroke="url(#grad)" stroke-width="2.2" stroke-linecap="square"/>
+  <line x1="207" y1="218" x2="293" y2="218" stroke="url(#grad)" stroke-width="2.2" stroke-linecap="square"/>
+
+  <!-- Square 4 -->
+  <line x1="218" y1="43"  x2="282" y2="43"  stroke="url(#grad)" stroke-width="1.8" stroke-linecap="square"/>
+  <line x1="218" y1="43"  x2="218" y2="125" stroke="url(#grad)" stroke-width="1.8" stroke-linecap="square"/>
+  <line x1="218" y1="125" x2="282" y2="125" stroke="url(#grad)" stroke-width="1.8" stroke-linecap="square"/>
+  <line x1="282" y1="125" x2="282" y2="207" stroke="url(#grad)" stroke-width="1.8" stroke-linecap="square"/>
+  <line x1="218" y1="207" x2="282" y2="207" stroke="url(#grad)" stroke-width="1.8" stroke-linecap="square"/>
+
+  <!-- Square 5 — innermost -->
+  <line x1="229" y1="54"  x2="271" y2="54"  stroke="url(#grad)" stroke-width="1.4" stroke-linecap="square"/>
+  <line x1="229" y1="54"  x2="229" y2="125" stroke="url(#grad)" stroke-width="1.4" stroke-linecap="square"/>
+  <line x1="229" y1="125" x2="271" y2="125" stroke="url(#grad)" stroke-width="1.4" stroke-linecap="square"/>
+  <line x1="271" y1="125" x2="271" y2="196" stroke="url(#grad)" stroke-width="1.4" stroke-linecap="square"/>
+  <line x1="229" y1="196" x2="271" y2="196" stroke="url(#grad)" stroke-width="1.4" stroke-linecap="square"/>
+
+  <!-- ============================================================
+       WORDMARK — "SYMMETRY" with the S replaced by the square-S icon
+       Wide letter-spacing, geometric weight ~300, all caps
+  ============================================================ -->
+  <text
+    x="250"
+    y="260"
+    font-family="'Helvetica Neue', 'Arial', sans-serif"
+    font-size="52"
+    font-weight="200"
+    letter-spacing="14"
+    text-anchor="middle"
+    fill="url(#grad)"
+    xml:space="preserve">SYMMETRY</text>
+</svg>
