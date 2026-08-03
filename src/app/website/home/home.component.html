@@ -1,15 +1,29 @@
-<!-- 1. Hero Banner -->
+<!-- 1. Hero Slider -->
 <section class="hero-section">
-  <div class="hero-image"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=85" alt="Luxury Interior"></div>
-  <div class="hero-content container">
-    <span class="section-label">Symmetry Interiors</span>
-    <h1>Timeless Spaces.<br>Exceptional Living.</h1>
-    <p>Luxury interiors, bespoke furniture and globally sourced pieces crafted to transform extraordinary spaces.</p>
-    <div class="hero-buttons">
-      <a routerLink="/shop" class="sym-btn">Explore Collection</a>
-      <a routerLink="/contact" class="sym-btn sym-btn-outline">Start Your Project</a>
+  <div class="hero-slides">
+    <div *ngFor="let slide of slides; let i = index"
+      class="hero-slide"
+      [class.active]="i === activeSlide"
+      [class.leaving]="i === prevSlide">
+      <img [src]="slide.image" [alt]="slide.label" loading="eager">
+      <div class="slide-overlay"></div>
     </div>
   </div>
+  <div class="hero-content container">
+    <span class="hero-label">{{ slides[activeSlide].label }}</span>
+    <h1>{{ slides[activeSlide].heading }}<br><em>{{ slides[activeSlide].headingEm }}</em></h1>
+    <p>{{ slides[activeSlide].sub }}</p>
+    <div class="hero-actions">
+      <a routerLink="/shop" class="hero-btn hero-btn--primary"><i class="bi bi-bag"></i> Shop Now</a>
+      <a routerLink="/projects" class="hero-btn hero-btn--outline">View Projects</a>
+    </div>
+  </div>
+  <button class="slide-arrow slide-arrow--prev" (click)="prev()" aria-label="Previous slide"><i class="bi bi-chevron-left"></i></button>
+  <button class="slide-arrow slide-arrow--next" (click)="next()" aria-label="Next slide"><i class="bi bi-chevron-right"></i></button>
+  <div class="slide-dots">
+    <button *ngFor="let slide of slides; let i = index" class="slide-dot" [class.active]="i === activeSlide" (click)="dotClick(i)" [attr.aria-label]="'Slide ' + (i+1)"></button>
+  </div>
+  <div class="slide-progress"><div class="slide-progress-bar" [class.running]="!animating"></div></div>
 </section>
 
 <!-- 2. About Symmetry Interiors -->
@@ -114,21 +128,66 @@
   </div>
 </section>
 
-<!-- 7. Global Sourcing Expertise -->
-<section class="section-padding sourcing-section">
+<!-- 6.5 Interior Showcase Fan Carousel -->
+<section class="showcase-section">
   <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-6">
-        <span class="section-label">Around The World</span>
-        <h2 class="section-title">Global Sourcing Expertise</h2>
-        <p class="section-description">Discover exceptional furniture and decorative pieces sourced from some of the world's most renowned design destinations. We travel the world so you don't have to.</p>
-        <div class="country-list"><span *ngFor="let country of countries">{{country}}</span></div>
-        <a routerLink="/global-sourcing" class="sym-btn mt-4">Explore Our Sourcing</a>
-      </div>
-      <div class="col-lg-6"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Global Furniture Sourcing"></div>
+    <div class="showcase-header">
+      <span class="section-label">Our Interiors</span>
+      <h2 class="section-title">Spaces We've Created</h2>
+      <p class="section-description">A glimpse into the world Symmetry Interiors brings to life — from intimate homes to grand hospitality spaces.</p>
     </div>
   </div>
+  <div class="fan-carousel" aria-label="Interior showcase carousel">
+    <div *ngFor="let s of showcaseSlides; let i = index"
+      class="fan-card"
+      [ngClass]="getShowcasePos(i)"
+      (click)="activeShowcase = i">
+      <img [src]="s.image" [alt]="s.label" loading="lazy">
+      <div class="fan-card-info">
+        <h3>{{s.label}}</h3>
+        <p>{{s.sub}}</p>
+        <a routerLink="/projects" class="fan-btn">View Projects</a>
+      </div>
+    </div>
+    <button class="fan-arrow fan-arrow--prev" (click)="showcasePrev()" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+    <button class="fan-arrow fan-arrow--next" (click)="showcaseNext()" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+  </div>
 </section>
+
+<!-- 7. Global Sourcing 3D Fan Carousel -->
+<section class="sourcing-section">
+  <div class="container">
+    <div class="sourcing-header text-center">
+      <span class="section-label">Around The World</span>
+      <h2 class="section-title">Global Sourcing Expertise</h2>
+      <p class="section-description mx-auto" style="max-width:560px">25 years of relationships with the world's finest furniture makers — from Italian ateliers to Balinese artisan studios.</p>
+    </div>
+  </div>
+  <div class="fan-carousel" aria-label="Global sourcing countries">
+    <div *ngFor="let s of sourcingSlides; let i = index"
+      class="fan-card"
+      [ngClass]="getSourcePos(i)"
+      (click)="activeSourcing = i">
+      <img [src]="s.image" [alt]="s.country" loading="lazy">
+      <div class="fan-card-info">
+        <span class="sourcing-flag">{{s.flag}}</span>
+        <h3>{{s.country}}</h3>
+        <p class="sourcing-tagline">{{s.tagline}}</p>
+        <p>{{s.desc}}</p>
+        <a routerLink="/global-sourcing" class="fan-btn">Explore Sourcing</a>
+      </div>
+    </div>
+    <button class="fan-arrow fan-arrow--prev" (click)="sourcingPrev()" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+    <button class="fan-arrow fan-arrow--next" (click)="sourcingNext()" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+  </div>
+  <div class="sourcing-dots">
+    <button *ngFor="let s of sourcingSlides; let i = index"
+      class="sourcing-dot" [class.active]="i === activeSourcing"
+      (click)="activeSourcing = i" [attr.aria-label]="s.country">
+    </button>
+  </div>
+</section>
+
 
 <!-- 8. Why Choose Us -->
 <section class="section-padding why-section">

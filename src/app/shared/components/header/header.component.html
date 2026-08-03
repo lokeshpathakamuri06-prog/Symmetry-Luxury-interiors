@@ -1,32 +1,98 @@
+<!-- Announcement bar -->
+<div class="announce-bar" *ngIf="false">
+  <div class="announce-inner">
+    <span><i class="bi bi-telephone-fill"></i> +91 99999 88888</span>
+    <span class="announce-divider">|</span>
+    <span><i class="bi bi-envelope-fill"></i> info&#64;symmetryinteriors.com</span>
+    <span class="announce-divider">|</span>
+    <span><i class="bi bi-truck"></i> Free delivery on orders above ₹1,00,000</span>
+    <span class="announce-divider">|</span>
+    <span><i class="bi bi-geo-alt-fill"></i> Banjara Hills, Hyderabad</span>
+  </div>
+  <div class="announce-right">
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://wa.me/919999988888" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+  </div>
+</div>
+
+<!-- Main header -->
 <header class="site-header" [class.scrolled]="isScrolled">
   <div class="container-fluid header-container">
+
+    <!-- Logo -->
     <a routerLink="/" class="brand-logo" (click)="closeMenu()">
-      <img src="assets/images/logo.png" alt="Symmetry Interiors" class="logo-main">
+      <img src="assets/images/logo2.svg" alt="Symmetry Interiors" class="logo-main">
     </a>
 
+    <!-- Desktop nav -->
     <nav class="desktop-nav">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
       <a routerLink="/about" routerLinkActive="active">About</a>
       <a routerLink="/services" routerLinkActive="active">Services</a>
-      <a routerLink="/shop" routerLinkActive="active">Shop</a>
+
+      <!-- Shop with dropdown -->
+      <div class="nav-dropdown">
+        <a routerLink="/shop" routerLinkActive="active">Shop <i class="bi bi-chevron-down"></i></a>
+        <div class="dropdown-menu-panel">
+          <div class="dropdown-grid">
+            <div class="dropdown-col">
+              <h5>Home Furniture</h5>
+              <a routerLink="/shop">Luxury Sofas</a>
+              <a routerLink="/shop">Lounge Chairs</a>
+              <a routerLink="/shop">Dining Furniture</a>
+              <a routerLink="/shop">Bedroom Furniture</a>
+              <a routerLink="/shop">Coffee Tables</a>
+            </div>
+            <div class="dropdown-col">
+              <h5>Office Furniture</h5>
+              <a routerLink="/shop">Executive Desks</a>
+              <a routerLink="/shop">Conference Tables</a>
+              <a routerLink="/shop">Office Chairs</a>
+              <a routerLink="/shop">Storage Solutions</a>
+            </div>
+            <div class="dropdown-col">
+              <h5>Lighting & Decor</h5>
+              <a routerLink="/shop">Pendant Lights</a>
+              <a routerLink="/shop">Floor Lamps</a>
+              <a routerLink="/shop">Rugs</a>
+              <a routerLink="/shop">Decorative Accessories</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <a routerLink="/projects" routerLinkActive="active">Projects</a>
       <a routerLink="/global-sourcing" routerLinkActive="active">Global Sourcing</a>
       <a routerLink="/blog" routerLinkActive="active">Blog</a>
       <a routerLink="/contact" routerLinkActive="active">Contact</a>
     </nav>
 
+    <!-- Header actions -->
     <div class="header-actions">
-      <button class="icon-btn" aria-label="Search"><i class="bi bi-search"></i></button>
+      <button class="icon-btn" aria-label="Search" (click)="toggleSearch()">
+        <i class="bi bi-search"></i>
+      </button>
       <a routerLink="/cart" class="icon-btn cart-btn" aria-label="Cart">
-        <i class="bi bi-bag"></i><span class="cart-count">0</span>
+        <i class="bi bi-bag"></i>
+        <span class="cart-count" *ngIf="cart.count()">{{cart.count()}}</span>
       </a>
-      <a routerLink="/contact" class="sym-btn enquire-btn">Enquire Now</a>
+      <a routerLink="/contact" class="enquire-btn" (click)="closeMenu()">Enquire Now</a>
       <button class="mobile-menu-btn" (click)="toggleMenu()" aria-label="Menu">
         <i class="bi" [class.bi-list]="!menuOpen" [class.bi-x-lg]="menuOpen"></i>
       </button>
     </div>
   </div>
 
+  <!-- Search bar -->
+  <div class="search-bar" [class.open]="searchOpen">
+    <div class="container-fluid">
+      <input type="search" placeholder="Search for furniture, interiors, collections..." aria-label="Search" autofocus>
+      <button (click)="toggleSearch()" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
   <div class="mobile-menu" [class.open]="menuOpen">
     <a routerLink="/" (click)="closeMenu()">Home</a>
     <a routerLink="/about" (click)="closeMenu()">About</a>
@@ -36,6 +102,6 @@
     <a routerLink="/global-sourcing" (click)="closeMenu()">Global Sourcing</a>
     <a routerLink="/blog" (click)="closeMenu()">Blog</a>
     <a routerLink="/contact" (click)="closeMenu()">Contact</a>
-    <a routerLink="/contact" class="sym-btn mobile-enquire" (click)="closeMenu()">Enquire Now</a>
+    <a routerLink="/contact" class="mobile-enquire" (click)="closeMenu()">Enquire Now</a>
   </div>
 </header>

@@ -1,33 +1,109 @@
 <footer class="site-footer">
-  <div class="footer-main">
+
+  <!-- App / CTA Banner -->
+  <div class="footer-cta">
     <div class="container">
-      <div class="row g-5">
-        <div class="col-lg-4">
-          <img src="assets/images/logo2.png" alt="Symmetry Interiors" class="footer-logo">
-          <p class="footer-description">Creating timeless spaces through exceptional interiors, bespoke furniture and globally sourced pieces.</p>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          </div>
+      <div class="footer-cta-inner">
+        <div class="footer-cta-text">
+          <span class="cta-tag">Premium Interiors</span>
+          <h2>Transform Your Space<br>With Symmetry Interiors</h2>
+          <p>Luxury design, bespoke furniture and global sourcing — all under one roof.</p>
         </div>
-        <div class="col-6 col-lg-2">
-          <h4>Explore</h4><a routerLink="/about">About</a><a routerLink="/services">Services</a><a routerLink="/projects">Projects</a><a routerLink="/blog">Blog</a>
-        </div>
-        <div class="col-6 col-lg-2">
-          <h4>Shop</h4><a routerLink="/shop">All Products</a><a routerLink="/shop">Collections</a><a routerLink="/shop">Furniture</a><a routerLink="/shop">Lighting</a>
-        </div>
-        <div class="col-lg-4">
-          <h4>Get In Touch</h4>
-          <p><i class="bi bi-telephone"></i> +91 XXXXX XXXXX</p>
-          <p><i class="bi bi-envelope"></i> info&#64;symmetryinteriors.com</p>
-          <p><i class="bi bi-geo-alt"></i> Hyderabad, Telangana, India</p>
+        <div class="footer-cta-btns">
+          <a routerLink="/contact" class="cta-btn cta-btn--primary">Get Free Consultation</a>
+          <a routerLink="/shop" class="cta-btn cta-btn--outline">Browse Shop</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="footer-bottom"><div class="container footer-bottom-inner">
-    <p>© 2026 Symmetry Interiors. All Rights Reserved.</p>
-    <div><a routerLink="/privacy-policy">Privacy Policy</a><a routerLink="/terms">Terms & Conditions</a></div>
-  </div></div>
+
+  <!-- Footer main -->
+  <div class="footer-main">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Brand col -->
+        <div class="col-lg-3 col-md-6">
+          <img src="assets/images/logo2.svg" alt="Symmetry Interiors" class="footer-logo">
+          <p class="footer-desc">Creating timeless spaces through exceptional interiors, bespoke furniture and globally sourced pieces.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://wa.me/919999988888" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h4 class="footer-heading">Categories</h4>
+          <a routerLink="/shop" class="footer-link">Luxury Sofas</a>
+          <a routerLink="/shop" class="footer-link">Lounge Chairs</a>
+          <a routerLink="/shop" class="footer-link">Dining Furniture</a>
+          <a routerLink="/shop" class="footer-link">Bedroom Furniture</a>
+          <a routerLink="/shop" class="footer-link">Office Furniture</a>
+          <a routerLink="/shop" class="footer-link">Outdoor Furniture</a>
+          <a routerLink="/shop" class="footer-link">Lighting & Decor</a>
+        </div>
+
+        <!-- Quick links -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h4 class="footer-heading">Quick Links</h4>
+          <a routerLink="/" class="footer-link">Home</a>
+          <a routerLink="/about" class="footer-link">About Us</a>
+          <a routerLink="/services" class="footer-link">Services</a>
+          <a routerLink="/projects" class="footer-link">Projects</a>
+          <a routerLink="/global-sourcing" class="footer-link">Global Sourcing</a>
+          <a routerLink="/blog" class="footer-link">Blog</a>
+          <a routerLink="/contact" class="footer-link">Contact</a>
+        </div>
+
+        <!-- Policies -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h4 class="footer-heading">Policies</h4>
+          <a routerLink="/privacy-policy" class="footer-link">Privacy Policy</a>
+          <a routerLink="/terms" class="footer-link">Terms & Conditions</a>
+          <a routerLink="/contact" class="footer-link">Shipping Policy</a>
+          <a routerLink="/contact" class="footer-link">Return Policy</a>
+          <a routerLink="/faq" class="footer-link">FAQ</a>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-heading">Get In Touch</h4>
+          <div class="footer-contact">
+            <div class="fc-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Banjara Hills, Hyderabad,<br>Telangana — 500034</span>
+            </div>
+            <div class="fc-item">
+              <i class="bi bi-telephone-fill"></i>
+              <a href="tel:+919999988888">+91 99999 88888</a>
+            </div>
+            <div class="fc-item">
+              <i class="bi bi-envelope-fill"></i>
+              <a href="mailto:info@symmetryinteriors.com">info&#64;symmetryinteriors.com</a>
+            </div>
+            <div class="fc-item">
+              <i class="bi bi-clock-fill"></i>
+              <span>Mon–Sat: 10am – 7pm</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer bottom -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>© 2026 Symmetry Interiors & Building Solutions Pvt. Ltd. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+        <a routerLink="/privacy-policy">Privacy Policy</a>
+        <a routerLink="/terms">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+
 </footer>

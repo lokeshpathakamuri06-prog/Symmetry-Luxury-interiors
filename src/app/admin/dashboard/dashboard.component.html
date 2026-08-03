@@ -1,0 +1,78 @@
+<div class="studio-shell">
+  <aside class="app-sidebar" [class.open]="sidebarOpen">
+    <a routerLink="/" class="studio-brand"><span>S</span><strong>Symmetry Interiors</strong><i
+        class="bi bi-chevron-down"></i></a>
+    <label class="app-search"><i class="bi bi-search"></i><input placeholder="Search apps..."></label>
+    <p class="nav-kicker">PINNED</p>
+    <nav class="app-nav"><button *ngFor="let app of apps" [class.active]="app.active"
+        (click)="app.active ? select('preview') : flash(app.label+' workspace is coming soon.')"><i class="bi"
+          [ngClass]="app.icon"></i>{{app.label}}</button></nav>
+    <p class="nav-kicker">GROWTH &amp; MARKETING</p><button class="add-app" (click)="flash('App catalog opened.')"><i
+        class="bi bi-plus-lg"></i> Add apps</button><button class="collapse" (click)="sidebarOpen=false"><i
+        class="bi bi-layout-sidebar-inset"></i> Collapse</button>
+  </aside>
+  <div class="mobile-scrim" [class.show]="sidebarOpen" (click)="sidebarOpen=false"></div>
+  <section class="workspace-nav">
+    <div class="workspace-title"><i class="bi bi-globe2"></i><strong>Website</strong><i
+        class="bi bi-chevron-right"></i><span>{{activeSection() | titlecase}}</span></div>
+    <nav><button *ngFor="let item of websiteSections" [class.active]="activeSection()===item.id"
+        (click)="select(item.id)"><i class="bi" [ngClass]="item.icon"></i>{{item.label}}</button></nav><button
+      class="workspace-collapse" (click)="sidebarOpen=true"><i class="bi bi-layout-sidebar-inset"></i> Collapse</button>
+  </section>
+  <main class="studio-main">
+    <header class="studio-top"><button class="mobile-menu" (click)="sidebarOpen=true"><i
+          class="bi bi-list"></i></button>
+      <div class="device-switch"><button [class.active]="device()==='desktop'" (click)="device.set('desktop')"><i
+            class="bi bi-display"></i></button><button [class.active]="device()==='tablet'"
+          (click)="device.set('tablet')"><i class="bi bi-tablet"></i></button><button
+          [class.active]="device()==='mobile'" (click)="device.set('mobile')"><i class="bi bi-phone"></i></button></div>
+      <div class="site-address"><span></span><strong>https://symmetryinteriors.com</strong><button
+          (click)="flash('Website URL copied.')"><i class="bi bi-copy"></i></button></div><button class="outline-action"
+        (click)="flash('Connect your production domain in Store Settings.')"><i class="bi bi-globe"></i> Connect
+        Domain</button><button class="edit-action"
+        (click)="flash('Choose a content section in the left menu to start editing.')"><i class="bi bi-pencil"></i> Edit
+        Website</button><a routerLink="/" target="_blank" class="outline-action"><i
+          class="bi bi-box-arrow-up-right"></i> Open Website</a>
+    </header>
+    <section class="preview-area" *ngIf="activeSection()==='preview'; else workspaceContent">
+      <div class="browser-shell" [class.tablet]="device()==='tablet'" [class.mobile]="device()==='mobile'">
+        <div class="browser-bar">
+          <div class="browser-dots"><i></i><i></i><i></i></div><span><i class="bi bi-info-circle"></i>
+            symmetryinteriors.com</span>
+        </div>
+        <div class="site-frame"><iframe src="/" title="Symmetry Interiors website preview"></iframe></div>
+      </div>
+    </section>
+    <ng-template #workspaceContent>
+      <section class="editor-page"><span class="editor-label">Website management</span>
+        <h1>{{activeSection() | titlecase}}</h1><ng-container [ngSwitch]="activeSection()">
+          <div *ngSwitchCase="'analytics'" class="editor-grid">
+            <article><span>Website visitors</span><strong>2,486</strong><small>↑ 14.8% this month</small></article>
+            <article><span>Enquiries</span><strong>38</strong><small>↑ 8 new this week</small></article>
+            <article><span>Product views</span><strong>8,924</strong><small>Top: Luna Lounge Chair</small></article>
+          </div>
+          <div *ngSwitchCase="'blogs'" class="content-panel">
+            <h2>Blog posts</h2>
+            <p>Create, edit and publish design stories, buying guides and project updates.</p><button
+              class="edit-action" (click)="flash('Blog editor opened.')">Create Blog Post</button>
+          </div>
+          <div *ngSwitchCase="'seo'" class="content-panel">
+            <h2>Search optimisation</h2>
+            <p>Manage page titles, descriptions, image alt text, sitemap and search integrations.</p><button
+              class="edit-action" (click)="flash('SEO editor opened.')">Edit SEO Settings</button>
+          </div>
+          <div *ngSwitchCase="'menu'" class="content-panel">
+            <h2>Navigation menu</h2>
+            <p>Arrange website navigation links and category menus.</p><button class="edit-action"
+              (click)="flash('Menu editor opened.')">Edit Menu</button>
+          </div>
+          <div *ngSwitchCase="'settings'" class="content-panel">
+            <h2>Website settings</h2>
+            <p>Manage brand details, custom domain, integrations and publishing preferences.</p><button
+              class="edit-action" (click)="flash('Website settings opened.')">Open Settings</button>
+          </div>
+        </ng-container>
+      </section>
+    </ng-template>
+  </main>
+</div>
