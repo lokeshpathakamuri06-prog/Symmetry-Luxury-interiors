@@ -22,28 +22,24 @@
 
 .brand {
   height: 84px;
-  padding: 18px 20px;
+  padding: 14px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
-.brand-mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #b89b5e;
-  color: #e8d4a7;
-  font-family: Georgia, serif;
-  font-size: 22px;
-  border-radius: 50%;
+.brand-logo {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
 }
 
-.brand-copy { display:flex; flex-direction:column; }
-.brand-copy strong { font-size: 13px; letter-spacing: .24em; }
-.brand-copy span { color:#a9a69e; font-size:8px; letter-spacing:.34em; margin-top:3px; }
+.sidebar-collapsed .brand-logo {
+  height: 36px;
+}
 .mobile-close { display:none; margin-left:auto; background:none; border:0; color:white; font-size:25px; }
 
 .navigation { padding: 22px 12px; overflow:auto; }
@@ -75,6 +71,7 @@
 .sidebar-collapsed .plan-card div,
 .sidebar-collapsed .sidebar-version { display:none; }
 .sidebar-collapsed .brand { justify-content:center; padding:18px 10px; }
+.sidebar-collapsed .brand-logo { height:36px; }
 .sidebar-collapsed .nav-item { justify-content:center; }
 .sidebar-collapsed .nav-icon { width:auto; }
 

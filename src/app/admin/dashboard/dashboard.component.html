@@ -1,7 +1,8 @@
 <div class="studio-shell">
   <aside class="app-sidebar" [class.open]="sidebarOpen">
-    <a routerLink="/" class="studio-brand"><span>S</span><strong>Symmetry Interiors</strong><i
-        class="bi bi-chevron-down"></i></a>
+    <a routerLink="/" class="studio-brand">
+      <img src="assets/images/logo2.svg" alt="Symmetry Interiors" class="studio-logo">
+    </a>
     <label class="app-search"><i class="bi bi-search"></i><input placeholder="Search apps..."></label>
     <p class="nav-kicker">PINNED</p>
     <nav class="app-nav"><button *ngFor="let app of apps" [class.active]="app.active"
