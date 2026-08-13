@@ -77,6 +77,7 @@
         <i class="bi bi-bag"></i>
         <span class="cart-count" *ngIf="cart.count()">{{cart.count()}}</span>
       </a>
+      <a routerLink="/login" class="login-btn" routerLinkActive="active" (click)="closeMenu()"><i class="bi bi-person-circle"></i> Login</a>
       <a routerLink="/contact" class="enquire-btn" (click)="closeMenu()">Enquire Now</a>
       <button class="mobile-menu-btn" (click)="toggleMenu()" aria-label="Menu">
         <i class="bi" [class.bi-list]="!menuOpen" [class.bi-x-lg]="menuOpen"></i>
@@ -102,6 +103,7 @@
     <a routerLink="/global-sourcing" (click)="closeMenu()">Global Sourcing</a>
     <a routerLink="/blog" (click)="closeMenu()">Blog</a>
     <a routerLink="/contact" (click)="closeMenu()">Contact</a>
+    <a routerLink="/login" (click)="closeMenu()">Login</a>
     <a routerLink="/contact" class="mobile-enquire" (click)="closeMenu()">Enquire Now</a>
   </div>
 </header>

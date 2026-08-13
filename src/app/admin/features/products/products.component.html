@@ -1,0 +1,20 @@
+<div class="page-head"><div><div class="eyebrow">CATALOG / PRODUCTS</div><h1>Products</h1><p>Manage your furniture and interior product catalog.</p></div><div class="actions"><button class="secondary">Export</button><button class="primary">+ Add Product</button></div></div>
+
+<div class="toolbar panel"><div class="filters"><input [value]="query()" (input)="query.set($any($event.target).value)" placeholder="⌕  Search products..."><select><option>All Categories</option><option>Seating</option><option>Tables</option><option>Lighting</option></select><select><option>All Status</option><option>Published</option><option>Draft</option></select></div><button class="view">▦</button></div>
+
+<div class="panel table-wrap">
+  <table>
+    <thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>COLLECTION</th><th>PRICE</th><th>STOCK</th><th>STATUS</th><th>UPDATED</th><th></th></tr></thead>
+    <tbody>
+      @for (product of products; track product.name) {
+        <tr>
+          <td><div class="product"><img [src]="product.image" [alt]="product.name"><div><strong>{{product.name}}</strong><small>SKU · SYM-{{ $index + 1041 }}</small></div></div></td>
+          <td>{{product.category}}</td><td>{{product.collection}}</td><td class="price">{{product.price}}</td>
+          <td><span [class.low]="product.stock < 5">{{product.stock}}</span></td>
+          <td><span class="status" [class.draft]="product.status==='Draft'">{{product.status}}</span></td><td>Aug 13, 2026</td>
+          <td><button class="more">•••</button></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

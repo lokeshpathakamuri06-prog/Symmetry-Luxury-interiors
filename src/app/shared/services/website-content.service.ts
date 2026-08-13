@@ -2,9 +2,9 @@ import { Injectable, signal } from '@angular/core';
 
 export interface HeroSlide { image:string; label:string; heading:string; headingEm:string; sub:string; }
 const defaults: HeroSlide[] = [
-  {image:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=85',label:'Residential Design',heading:'Where Luxury Meets',headingEm:'Timeless Design',sub:'Transforming spaces into extraordinary experiences through refined design and exceptional craftsmanship.'},
-  {image:'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1920&q=85',label:'Interior Architecture',heading:'Spaces That',headingEm:'Inspire Living',sub:'Bespoke interiors shaped by your vision, from first sketch to a beautifully finished space.'},
-  {image:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1920&q=85',label:'Bedroom & Private Spaces',heading:'Refined Comfort,',headingEm:'Effortless Elegance',sub:'Every room designed with precision, warmth and the materials that define true luxury.'}
+  {image:'',label:'Residential Design',heading:'Where Luxury Meets',headingEm:'Timeless Design',sub:'Transforming spaces into extraordinary experiences through refined design and exceptional craftsmanship.'},
+  {image:'',label:'Interior Architecture',heading:'Spaces That',headingEm:'Inspire Living',sub:'Bespoke interiors shaped by your vision, from first sketch to a beautifully finished space.'},
+  {image:'',label:'Bedroom & Private Spaces',heading:'Refined Comfort,',headingEm:'Effortless Elegance',sub:'Every room designed with precision, warmth and the materials that define true luxury.'}
 ];
 @Injectable({providedIn:'root'})
 export class WebsiteContentService {

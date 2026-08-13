@@ -1,0 +1,5 @@
+<div class="page-head"><div><div class="eyebrow">CONTENT / BLOG</div><h1>Blog</h1><p>Publish insights, design stories and interior inspiration.</p></div><div class="actions"><button class="secondary">Categories</button><button class="primary">+ New Article</button></div></div>
+<div class="panel toolbar"><input placeholder="⌕  Search articles..."><select><option>All Categories</option></select><select><option>All Status</option></select></div>
+<div class="panel table-wrap"><table><thead><tr><th>ARTICLE</th><th>CATEGORY</th><th>PUBLISHED</th><th>VIEWS</th><th>STATUS</th><th></th></tr></thead><tbody>
+@for(post of posts; track post.title){<tr><td><div class="article"><img [src]="post.image"><div><strong>{{post.title}}</strong><small>By Symmetry Interiors</small></div></div></td><td>{{post.category}}</td><td>{{post.date}}</td><td>{{post.views}}</td><td><span class="status" [class.draft]="post.status==='Draft'">{{post.status}}</span></td><td>•••</td></tr>}
+</tbody></table></div>

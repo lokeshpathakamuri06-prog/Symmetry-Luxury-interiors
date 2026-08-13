@@ -1,0 +1,90 @@
+<div class="page-head">
+  <div>
+    <div class="eyebrow">OVERVIEW</div>
+    <h1>Good Morning, Admin</h1>
+    <p>Manage your Symmetry Interiors website from one place.</p>
+  </div>
+  <div class="head-actions">
+    <button class="secondary">Download Report</button>
+    <button class="primary">+ Quick Add</button>
+  </div>
+</div>
+
+<div class="stats-grid">
+  @for (stat of stats; track stat.label) {
+    <article class="stat-card">
+      <div class="stat-top">
+        <span class="stat-icon">{{ stat.icon }}</span>
+        <span class="change" [class.negative]="!stat.positive">{{ stat.change }}</span>
+      </div>
+      <div class="stat-value">{{ stat.value }}</div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </article>
+  }
+</div>
+
+<div class="dashboard-grid">
+  <section class="panel traffic-panel">
+    <div class="panel-head">
+      <div>
+        <h2>Website Traffic</h2>
+        <p>Visitors, page views and enquiries</p>
+      </div>
+      <select [value]="period()" (change)="period.set($any($event.target).value)">
+        <option>7 Days</option><option>30 Days</option><option>3 Months</option><option>6 Months</option><option>1 Year</option>
+      </select>
+    </div>
+
+    <div class="chart">
+      <div class="y-labels"><span>1000</span><span>750</span><span>500</span><span>250</span><span>0</span></div>
+      <div class="chart-area">
+        <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+        <svg viewBox="0 0 800 260" preserveAspectRatio="none" class="line-chart">
+          <defs>
+            <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b89b5e" stop-opacity=".24"/>
+              <stop offset="100%" stop-color="#b89b5e" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 205 C60 185 70 198 120 166 S190 180 245 132 S315 156 370 108 S430 142 485 94 S560 126 610 73 S680 108 735 49 S770 61 800 30 L800 260 L0 260 Z" fill="url(#fill)"/>
+          <path d="M0 205 C60 185 70 198 120 166 S190 180 245 132 S315 156 370 108 S430 142 485 94 S560 126 610 73 S680 108 735 49 S770 61 800 30" fill="none" stroke="#9b7f45" stroke-width="3"/>
+        </svg>
+        <div class="x-labels"><span>01</span><span>05</span><span>10</span><span>15</span><span>20</span><span>25</span><span>30</span></div>
+      </div>
+    </div>
+    <div class="legend"><span><i class="gold"></i>Visitors</span><span><i class="dark"></i>Page Views</span><span><i class="grey"></i>Enquiries</span></div>
+  </section>
+
+  <section class="panel activity-panel">
+    <div class="panel-head"><div><h2>Recent Activity</h2><p>Latest CMS changes</p></div><button class="text-button">View all →</button></div>
+    <div class="activity-list">
+      @for (activity of activities; track activity[0]) {
+        <div class="activity">
+          <span class="activity-dot"></span>
+          <div><strong>{{ activity[0] }}</strong><small>{{ activity[1] }} · {{ activity[2] }}</small></div>
+        </div>
+      }
+    </div>
+  </section>
+</div>
+
+<div class="bottom-grid">
+  <section class="panel">
+    <div class="panel-head"><div><h2>Enquiries Overview</h2><p>Current lead pipeline</p></div><button class="text-button">Manage →</button></div>
+    <div class="pipeline">
+      <div><strong>14</strong><span>New</span><i style="width:80%"></i></div>
+      <div><strong>8</strong><span>Contacted</span><i style="width:55%"></i></div>
+      <div><strong>6</strong><span>Follow-up</span><i style="width:43%"></i></div>
+      <div><strong>4</strong><span>Converted</span><i style="width:30%"></i></div>
+    </div>
+  </section>
+  <section class="panel quick-panel">
+    <div class="panel-head"><div><h2>Quick Actions</h2><p>Frequently used tools</p></div></div>
+    <div class="quick-actions">
+      <button><span>✦</span><b>Homepage</b><small>Update sections</small></button>
+      <button><span>□</span><b>Product</b><small>Add new item</small></button>
+      <button><span>▧</span><b>Project</b><small>Upload project</small></button>
+      <button><span>✎</span><b>Blog</b><small>Write article</small></button>
+    </div>
+  </section>
+</div>

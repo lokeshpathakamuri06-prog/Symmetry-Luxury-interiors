@@ -1,0 +1,5 @@
+<div class="page-head"><div><div class="eyebrow">WEBSITE / MEDIA</div><h1>Media Library</h1><p>Manage interior photography, videos and brand assets.</p></div><button class="primary">↑ Upload Media</button></div>
+<div class="toolbar panel"><div class="tabs"><button class="active">All Media</button><button>Images</button><button>Videos</button><button>Documents</button></div><input placeholder="⌕ Search files..."><select><option>Newest first</option></select></div>
+<div class="media-grid">
+ @for(image of media;track image){<article><div class="thumb"><img [src]="image"><div class="hover"><button>Preview</button><button>•••</button></div></div><div class="meta"><strong>interior-project-{{ $index + 1 }}.jpg</strong><span>1920 × 1280 · 2.4 MB</span></div></article>}
+</div>

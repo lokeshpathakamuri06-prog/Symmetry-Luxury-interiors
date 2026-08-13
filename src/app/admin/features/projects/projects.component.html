@@ -1,0 +1,10 @@
+<div class="page-head"><div><div class="eyebrow">PORTFOLIO / PROJECTS</div><h1>Projects</h1><p>Showcase completed luxury interior projects and case studies.</p></div><div class="actions"><button class="secondary">Filters</button><button class="primary">+ Add Project</button></div></div>
+<div class="toolbar panel"><strong>Project Portfolio</strong><span>46 projects</span><div><select><option>All Types</option><option>Residential</option><option>Commercial</option><option>Hospitality</option></select><select><option>Newest first</option><option>Oldest first</option></select></div></div>
+<div class="project-grid">
+ @for (project of projects; track project.name) {
+  <article class="project-card">
+    <div class="image"><img [src]="project.image" [alt]="project.name"><span class="status">{{project.status}}</span><button class="more">•••</button></div>
+    <div class="project-info"><span>{{project.type}}</span><h3>{{project.name}}</h3><p>Completed {{project.date}}</p><button>Edit Project →</button></div>
+  </article>
+ }
+</div>

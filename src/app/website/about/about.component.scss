@@ -57,11 +57,62 @@
 .reason-card p{color:var(--sym-grey);line-height:1.7;font-size:14px;margin:0}
 
 /* CTA */
-.about-cta{padding:120px 20px;background:var(--sym-dark)}
-.about-cta .section-label{color:var(--sym-gold)}
-.about-cta h2{font-size:clamp(40px,6vw,75px);color:#fff;margin-bottom:20px}
-.about-cta p{color:rgba(255,255,255,0.7);margin-bottom:0;font-size:16px;line-height:1.8}
-.cta-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.about-cta{
+  position:relative;
+  padding:120px 20px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#1a1610 0%,#2a2018 50%,#1a1610 100%);
+}
+.about-cta::before{
+  content:'';
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  border:1px solid rgba(212,175,107,0.15);
+  top:-200px;right:-150px;
+  pointer-events:none;
+}
+.about-cta::after{
+  content:'';
+  position:absolute;
+  width:400px;height:400px;
+  border-radius:50%;
+  border:1px solid rgba(212,175,107,0.1);
+  bottom:-100px;left:-100px;
+  pointer-events:none;
+}
+.about-cta .container{position:relative;z-index:2}
+.about-cta .section-label{color:rgba(212,175,107,0.9)}
+.about-cta h2{font-size:clamp(38px,5.5vw,68px);color:#fff;margin-bottom:18px;line-height:1.05}
+.about-cta p{color:rgba(255,255,255,0.65);margin-bottom:0;font-size:16px;line-height:1.8;max-width:520px;margin-left:auto;margin-right:auto}
+.cta-buttons{
+  display:flex;gap:16px;justify-content:center;
+  flex-wrap:wrap;margin-top:44px;
+  position:relative;z-index:2;
+}
+.cta-buttons .sym-btn{
+  background:rgba(212,175,107,0.92);
+  color:#1a1610 !important;
+  border:2px solid rgba(212,175,107,0.92);
+  font-weight:600;letter-spacing:1.5px;
+  padding:15px 36px;
+  transition:.3s ease;
+}
+.cta-buttons .sym-btn:hover{
+  background:#fff;border-color:#fff;color:#1a1610 !important;
+}
+.cta-buttons .sym-btn-outline{
+  background:transparent;
+  color:#fff !important;
+  border:2px solid rgba(255,255,255,0.4) !important;
+  padding:15px 36px;
+  transition:.3s ease;
+}
+.cta-buttons .sym-btn-outline:hover{
+  background:rgba(255,255,255,0.1) !important;
+  border-color:#fff !important;
+  color:#fff !important;
+}
 
 /* Responsive */
 @media(max-width:991px){
@@ -82,7 +133,7 @@
   .stats-row{gap:20px}
   .stat-item strong{font-size:40px}
   .mission-image-strip{grid-template-columns:1fr}
-  .cta-buttons{flex-direction:column}
-  .cta-buttons a{width:100%}
+  .cta-buttons{flex-direction:column;align-items:center}
+  .cta-buttons a{width:100%;max-width:320px;text-align:center;justify-content:center}
   .timeline-year{font-size:22px;min-width:50px}
 }

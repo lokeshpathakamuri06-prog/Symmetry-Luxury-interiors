@@ -40,6 +40,7 @@
 .cart-count{position:absolute;top:4px;right:4px;width:16px;height:16px;background:#1a1a2e;color:#fff;font-size:9px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .enquire-btn{background:#1a1a2e;color:#fff;padding:10px 22px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:.2s;white-space:nowrap}
 .enquire-btn:hover{background:rgba(212,175,107,0.95);color:#1a1610}
+.login-btn{display:inline-flex;align-items:center;gap:7px;color:#222;padding:9px 12px;border:1px solid #dedad2;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;text-decoration:none;transition:.2s;white-space:nowrap}.login-btn:hover,.login-btn.active{background:#1a1a2e;color:#fff;border-color:#1a1a2e}
 .mobile-menu-btn{display:none;border:none;background:transparent;font-size:26px;cursor:pointer;color:#222}
 
 /* Search bar */
@@ -63,6 +64,7 @@
   .announce-inner span:nth-child(n+4){display:none}
   .header-container{padding:0 20px}
   .desktop-nav{display:none}
+  .login-btn{display:none}
   .mobile-menu-btn{display:block}
   .mobile-menu{display:flex}
 }

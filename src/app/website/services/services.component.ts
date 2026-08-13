@@ -52,7 +52,7 @@ export class ServicesComponent {
       subtitle: 'One Partner, Complete Solution',
       description: 'From the first sketch to the final installation, we manage every aspect of your interior project. Our turnkey service eliminates the complexity of coordinating multiple contractors — you hand us the keys, we deliver a finished space.',
       features: ['End-to-End Project Management','Contractor & Vendor Coordination','Site Supervision & Quality Control','Timeline & Budget Management','Handover & After-Care'],
-      image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80',
+      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=80',
       alt: 'Turnkey interior project',
       reverse: true
     },
@@ -85,7 +85,7 @@ export class ServicesComponent {
       subtitle: 'Light That Transforms',
       description: 'Lighting is the invisible hand that shapes how a space feels. We design comprehensive lighting schemes that layer ambient, task and accent light to create atmosphere, highlight architecture and elevate every interior. Our decor curation completes the story.',
       features: ['Architectural Lighting Design','Ambient, Task & Accent Layering','Statement Lighting Specification','Art & Accessory Curation','Soft Furnishings & Textiles'],
-      image: 'https://images.unsplash.com/photo-1513506003901-1e6a35073c5f?w=900&q=80',
+      image: 'assets/images/HAJ0003-3.jpeg',
       alt: 'Lighting and decor design',
       reverse: false
     }

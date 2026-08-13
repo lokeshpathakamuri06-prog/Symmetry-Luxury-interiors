@@ -27,6 +27,8 @@ h1,h2,h3,h4,h5,h6 {
 a { text-decoration: none; color: inherit; }
 button, input, select, textarea { font-family: inherit; }
 img { max-width: 100%; display: block; }
+/* Remote images are intentionally disabled until local images are added. */
+img[src=""] { display: none; }
 .section-padding { padding: 100px 0; }
 .section-label {
   font-size: 11px;

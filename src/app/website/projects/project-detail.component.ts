@@ -36,14 +36,14 @@ const PROJECTS: ProjectDetail[] = [
       'We developed a design language centred on natural materials, restrained colour and deliberate scale. American walnut joinery, hand-plastered walls, linen upholstery and locally sourced stone create a palette that is rich without being ostentatious. Every room is composed around a central object — a dining table, a reading chair, a sculptural lamp — that anchors the space and gives it meaning.',
       'The project included a full gut renovation of the existing structure, complete interior architecture, bespoke furniture design and a comprehensive art and accessory programme sourced from studios across India and Italy.'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1600&q=85',
+    heroImage: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&q=85',
     gallery: [
-      { src:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=85', caption:'Living Room — Custom walnut joinery and Italian linen sofas' },
-      { src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=85', caption:'Master Bedroom — Hand-plastered walls with bespoke bedframe' },
-      { src:'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=1200&q=85', caption:'Dining Room — Marble-top table with Sella chairs' },
-      { src:'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&q=85', caption:'Study — Floor-to-ceiling bookshelf with integrated lighting' },
-      { src:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1200&q=85', caption:'Family Lounge — Curved sofa with travertine coffee table' },
-      { src:'https://images.unsplash.com/photo-1513506003901-1e6a35073c5f?w=1200&q=85', caption:'Entry Hall — Statement pendant and hand-knotted rug' }
+      { src:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=85', caption:'Living Room — Custom walnut joinery and Italian linen sofas' },
+      { src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=85', caption:'Master Bedroom — Hand-plastered walls with bespoke bedframe' },
+      { src:'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=900&q=85', caption:'Dining Room — Marble-top table with Sella chairs' },
+      { src:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=85', caption:'Study — Floor-to-ceiling bookshelf with integrated lighting' },
+      { src:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=900&q=85', caption:'Family Lounge — Curved sofa with travertine coffee table' },
+      { src:'https://images.unsplash.com/photo-1513506003901-1e6a35073c5f?w=900&q=85', caption:'Entry Hall — Statement pendant and hand-knotted rug' }
     ],
     scope: [
       { icon:'bi-layout-text-window', title:'Interior Architecture', detail:'Full spatial planning, ceiling design, partition layouts and joinery drawings across all rooms.' },
@@ -84,13 +84,13 @@ const PROJECTS: ProjectDetail[] = [
       'The design brief called for a departure from the typical tech-office aesthetic of exposed brick and bean bags. Instead, we developed a palette that draws on the language of premium hospitality — considered materiality, human-scaled spaces and layered lighting — applied to the rigour of a working environment.',
       'Key spaces include an executive boardroom with a 16-seat custom conference table, a client reception and hospitality lounge, open-plan workspaces, focus rooms, a wellness zone and a rooftop terrace.'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=85',
+    heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85',
     gallery: [
-      { src:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85', caption:'Main Reception — Brand identity integrated through materiality' },
-      { src:'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=85', caption:'Executive Boardroom — 16-seat custom table in American walnut' },
-      { src:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=85', caption:'Client Lounge — Hospitality-grade seating and lighting' },
-      { src:'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&q=85', caption:'Open Workspace — Ergonomic benching with acoustic panels' },
-      { src:'https://images.unsplash.com/photo-1513506003901-1e6a35073c5f?w=1200&q=85', caption:'Wellness Zone — Biophilic design with living wall installation' }
+      { src:'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=900&q=85', caption:'Main Reception — Brand identity integrated through materiality' },
+      { src:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=85', caption:'Executive Boardroom — 16-seat custom table in American walnut' },
+      { src:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=900&q=85', caption:'Client Lounge — Hospitality-grade seating and lighting' },
+      { src:'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=900&q=85', caption:'Open Workspace — Ergonomic benching with acoustic panels' },
+      { src:'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=85', caption:'Wellness Zone — Biophilic design with living wall installation' }
     ],
     scope: [
       { icon:'bi-layout-text-window', title:'Space Planning',       detail:'Full floor-plate planning for 200 staff across open-plan, focus, collaboration and executive zones.' },
@@ -131,14 +131,14 @@ const PROJECTS: ProjectDetail[] = [
       'We developed a design narrative around the concept of "coastal archaeology" — unearthing the textures, colours and materials of the land itself. Laterite stone, handmade terracotta tiles, cane weave and locally sourced hardwoods form the material foundation, layered with curated contemporary furniture and lighting from our global sourcing network.',
       'The project encompassed 45 guest rooms and suites, a signature restaurant and bar, a spa and wellness pavilion, two pools, event facilities and all public and arrival areas.'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=85',
+    heroImage: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=85',
     gallery: [
-      { src:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=85', caption:'Pool Villa — Outdoor living with ocean views' },
-      { src:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=85', caption:'Guest Suite — Canopy bed with hand-woven textiles' },
-      { src:'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&q=85', caption:'Signature Restaurant — Laterite arches and rattan pendants' },
-      { src:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=85', caption:'Arrival Pavilion — Double-height space with living wall' },
-      { src:'https://images.unsplash.com/photo-1513506003901-1e6a35073c5f?w=1200&q=85', caption:'Spa — Stone soaking bath with mood lighting' },
-      { src:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1200&q=85', caption:'Pool Deck — Teak loungers with custom parasols' }
+      { src:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=85', caption:'Pool Villa — Outdoor living with ocean views' },
+      { src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=85', caption:'Guest Suite — Canopy bed with hand-woven textiles' },
+      { src:'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=900&q=85', caption:'Signature Restaurant — Laterite arches and rattan pendants' },
+      { src:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=85', caption:'Arrival Pavilion — Double-height space with living wall' },
+      { src:'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=900&q=85', caption:'Spa — Stone soaking bath with mood lighting' },
+      { src:'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=85', caption:'Pool Deck — Teak loungers with custom parasols' }
     ],
     scope: [
       { icon:'bi-layout-text-window', title:'Interior Architecture', detail:'All guest rooms, suites, restaurant, bar, spa, arrival pavilion and public areas.' },

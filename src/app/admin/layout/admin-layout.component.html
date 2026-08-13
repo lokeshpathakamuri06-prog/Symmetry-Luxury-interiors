@@ -1,0 +1,90 @@
+<div class="admin-shell" [class.sidebar-collapsed]="!sidebarOpen()" [class.mobile-open]="mobileMenuOpen()">
+  <div class="mobile-overlay" (click)="closeMobile()"></div>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div class="brand-copy">
+        <strong>SYMMETRY</strong>
+        <span>INTERIORS</span>
+      </div>
+      <button class="mobile-close" (click)="closeMobile()">×</button>
+    </div>
+
+    <nav class="navigation">
+      @for (section of sections; track section.title) {
+        <div class="nav-section">
+          <div class="nav-title">{{ section.title }}</div>
+          @for (item of section.items; track item.label) {
+            <a
+              class="nav-item"
+              [routerLink]="item.route"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: item.route === '/admin/dashboard' }"
+              (click)="closeMobile()">
+              <span class="nav-icon">{{ item.icon }}</span>
+              <span class="nav-label">{{ item.label }}</span>
+            </a>
+          }
+        </div>
+      }
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="plan-card">
+        <span class="plan-dot"></span>
+        <div>
+          <strong>Live Website</strong>
+          <small>All systems operational</small>
+        </div>
+      </div>
+      <div class="sidebar-version">Symmetry CMS · Angular 18</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-left">
+        <button class="icon-button menu-button" (click)="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+        <button class="mobile-menu-button" (click)="mobileMenuOpen.set(true)">☰</button>
+        <div class="breadcrumb">
+          <span>Symmetry CMS</span>
+          <b>/</b>
+          <span class="muted">Admin</span>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button class="website-button" title="Open website">
+          <span>↗</span>
+          <span>View Website</span>
+        </button>
+        <button class="icon-button" title="Search" (click)="searchOpen.set(!searchOpen())">⌕</button>
+        <button class="icon-button notification" title="Notifications">
+          ♢
+          <span class="notification-dot"></span>
+        </button>
+        <div class="profile">
+          <div class="avatar">A</div>
+          <div class="profile-info">
+            <strong>Admin</strong>
+            <span>Super Admin</span>
+          </div>
+          <span class="chevron">⌄</span>
+        </div>
+      </div>
+    </header>
+
+    @if (searchOpen()) {
+      <div class="search-bar">
+        <span>⌕</span>
+        <input type="text" placeholder="Search products, projects, enquiries..." autofocus>
+        <button (click)="searchOpen.set(false)">Esc</button>
+      </div>
+    }
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>

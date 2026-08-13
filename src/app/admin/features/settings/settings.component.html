@@ -1,0 +1,22 @@
+<div class="page-head"><div><div class="eyebrow">SYSTEM / SETTINGS</div><h1>Settings</h1><p>Configure your company, website and administration preferences.</p></div><button class="primary">Save Changes</button></div>
+<div class="settings-layout">
+  <aside class="panel setting-nav">
+    @for(item of settings;track item){<button [class.active]="active===item" (click)="active=item"><span>{{ $index===0?'○':$index===1?'◇':$index===2?'✉':$index===3?'◫':'⚿' }}</span>{{item}}<b>›</b></button>}
+  </aside>
+  <section class="panel settings-content">
+    <div class="section-title"><h2>{{active}} Settings</h2><p>Update the {{active.toLowerCase()}} configuration for your CMS.</p></div>
+    @if(active==='General'){
+      <form [formGroup]="form">
+        <div class="form-grid">
+          <label>Company Name<input formControlName="company"></label>
+          <label>Contact Email<input formControlName="email"></label>
+          <label>Phone Number<input formControlName="phone"></label>
+          <label>Business Hours<input formControlName="hours"></label>
+          <label class="full">Address<textarea formControlName="address"></textarea></label>
+        </div>
+      </form>
+    } @else {
+      <div class="placeholder"><div>⚙</div><h3>{{active}} configuration</h3><p>This settings module is ready for your API-backed implementation.</p><button class="secondary">Configure {{active}}</button></div>
+    }
+  </section>
+</div>

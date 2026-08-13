@@ -1,0 +1,70 @@
+<div class="page-head">
+  <div>
+    <div class="eyebrow">WEBSITE / HOMEPAGE</div>
+    <h1>Homepage CMS</h1>
+    <p>Manage the sections and visual content of your public homepage.</p>
+  </div>
+  <div class="actions">
+    <button class="secondary" (click)="preview.set(true)">Preview</button>
+    <button class="primary">+ Add Section</button>
+  </div>
+</div>
+
+<div class="hero-manager panel">
+  <div class="hero-image">
+    <div class="hero-overlay">
+      <span class="live-badge">LIVE HERO</span>
+      <h2>Timeless spaces.<br>Beautifully considered.</h2>
+      <p>Luxury interiors crafted around the way you live.</p>
+      <button>Explore our work →</button>
+    </div>
+  </div>
+  <div class="hero-settings">
+    <div class="section-label">HERO BANNER</div>
+    <h2>Primary Homepage Banner</h2>
+    <p>Desktop and mobile visuals, headline, supporting copy and call-to-action.</p>
+    <div class="hero-meta">
+      <div><span>Status</span><b class="published">Published</b></div>
+      <div><span>Desktop</span><b>1920 × 900</b></div>
+      <div><span>Mobile</span><b>1080 × 1350</b></div>
+    </div>
+    <div class="hero-actions"><button class="secondary">Edit Banner</button><button class="ghost">Manage Media</button></div>
+  </div>
+</div>
+
+<div class="toolbar panel">
+  <div class="toolbar-left"><strong>Homepage Sections</strong><span>{{ sections().length }} sections</span></div>
+  <input [formControl]="search" placeholder="Search sections...">
+</div>
+
+<div class="section-list">
+  @for (section of sections(); track section.title) {
+    <article class="section-card">
+      <div class="drag">⋮⋮</div>
+      <div class="section-icon">{{ section.icon }}</div>
+      <div class="section-info">
+        <h3>{{ section.title }}</h3>
+        <p>{{ section.description }}</p>
+      </div>
+      <span class="type">{{ section.type }}</span>
+      <span class="updated">{{ section.updated }}</span>
+      <button class="toggle" [class.on]="section.enabled" (click)="toggle(section)">
+        <i></i>
+      </button>
+      <button class="edit">Edit</button>
+      <button class="more">•••</button>
+    </article>
+  }
+</div>
+
+@if (preview()) {
+  <div class="modal-backdrop" (click)="preview.set(false)">
+    <div class="preview-modal" (click)="$event.stopPropagation()">
+      <div class="modal-head"><strong>Homepage Preview</strong><button (click)="preview.set(false)">×</button></div>
+      <div class="preview-frame">
+        <div class="preview-hero"><span>SYMMETRY INTERIORS</span><h2>Spaces with a sense of permanence.</h2><button>Discover our work</button></div>
+        <div class="preview-body"><div></div><div></div><div></div></div>
+      </div>
+    </div>
+  </div>
+}

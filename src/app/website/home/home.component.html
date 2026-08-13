@@ -1,11 +1,7 @@
-<!-- 1. Hero Slider -->
 <section class="hero-section">
   <div class="hero-slides">
-    <div *ngFor="let slide of slides; let i = index"
-      class="hero-slide"
-      [class.active]="i === activeSlide"
-      [class.leaving]="i === prevSlide">
-      <img [src]="slide.image" [alt]="slide.label" loading="eager">
+    <div *ngFor="let slide of slides; let i = index" class="hero-slide" [class.active]="i === activeSlide" [class.leaving]="i === prevSlide">
+      <img *ngIf="heroImages[i]" [src]="heroImages[i]" [alt]="slide.label" loading="eager">
       <div class="slide-overlay"></div>
     </div>
   </div>
@@ -13,302 +9,122 @@
     <span class="hero-label">{{ slides[activeSlide].label }}</span>
     <h1>{{ slides[activeSlide].heading }}<br><em>{{ slides[activeSlide].headingEm }}</em></h1>
     <p>{{ slides[activeSlide].sub }}</p>
-    <div class="hero-actions">
-      <a routerLink="/shop" class="hero-btn hero-btn--primary"><i class="bi bi-bag"></i> Shop Now</a>
-      <a routerLink="/projects" class="hero-btn hero-btn--outline">View Projects</a>
-    </div>
+    <div class="hero-actions"><a routerLink="/shop" class="hero-btn hero-btn--primary"><i class="bi bi-bag"></i> Shop Now</a><a routerLink="/projects" class="hero-btn hero-btn--outline">View Projects</a></div>
+    <div class="hero-proof"><span><i class="bi bi-patch-check-fill"></i> Bespoke interiors</span><span><i class="bi bi-globe2"></i> Global sourcing</span><span><i class="bi bi-stars"></i> Turnkey delivery</span></div>
   </div>
-  <button class="slide-arrow slide-arrow--prev" (click)="prev()" aria-label="Previous slide"><i class="bi bi-chevron-left"></i></button>
-  <button class="slide-arrow slide-arrow--next" (click)="next()" aria-label="Next slide"><i class="bi bi-chevron-right"></i></button>
-  <div class="slide-dots">
-    <button *ngFor="let slide of slides; let i = index" class="slide-dot" [class.active]="i === activeSlide" (click)="dotClick(i)" [attr.aria-label]="'Slide ' + (i+1)"></button>
-  </div>
-  <div class="slide-progress"><div class="slide-progress-bar" [class.running]="!animating"></div></div>
+  <button class="slide-arrow slide-arrow--prev" (click)="prev()" aria-label="Previous slide"><i class="bi bi-chevron-left"></i></button><button class="slide-arrow slide-arrow--next" (click)="next()" aria-label="Next slide"><i class="bi bi-chevron-right"></i></button>
+  <div class="slide-dots"><button *ngFor="let slide of slides; let i = index" class="slide-dot" [class.active]="i === activeSlide" (click)="dotClick(i)" [attr.aria-label]="'Slide ' + (i + 1)"></button></div>
+  <div class="hero-scroll"><span>Scroll to explore</span><i class="bi bi-arrow-down"></i></div>
 </section>
 
-<!-- 2. About Symmetry Interiors -->
-<section class="section-padding about-section">
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-6">
-        <div class="about-image"><img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800&q=80" alt="Symmetry Interior Design"></div>
-      </div>
-      <div class="col-lg-6">
-        <span class="section-label">The Symmetry Experience</span>
-        <h2 class="section-title">Where timeless design meets exceptional craftsmanship.</h2>
-        <p class="section-description">Symmetry Interiors creates refined spaces that combine architectural design, bespoke furniture and global sourcing expertise. Every project is a collaboration — shaped by your vision and realised through our craft.</p>
-        <div class="about-stats row g-3 mt-4 mb-4">
-          <div class="col-4"><div class="stat"><strong>12+</strong><span>Years of Excellence</span></div></div>
-          <div class="col-4"><div class="stat"><strong>500+</strong><span>Projects Completed</span></div></div>
-          <div class="col-4"><div class="stat"><strong>5</strong><span>Global Sources</span></div></div>
-        </div>
-        <a routerLink="/about" class="sym-btn">Discover Our Story</a>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="section-padding about-section"><div class="container"><div class="about-content"><span class="section-label">The Symmetry Experience</span><h2 class="section-title">Where timeless design meets exceptional craftsmanship.</h2><p class="section-description">Symmetry Interiors creates refined spaces that combine architectural design, bespoke furniture and global sourcing expertise. Every project is a collaboration — shaped by your vision and realised through our craft.</p><div class="about-stats row g-3 mt-4 mb-4"><div class="col-4"><div class="stat"><strong>12+</strong><span>Years of Excellence</span></div></div><div class="col-4"><div class="stat"><strong>500+</strong><span>Projects Completed</span></div></div><div class="col-4"><div class="stat"><strong>5</strong><span>Global Sources</span></div></div></div><a routerLink="/about" class="sym-btn">Discover Our Story</a></div></div></section>
 
 <!-- 3. Featured Furniture Collections -->
 <section class="section-padding collections-section">
   <div class="container">
-    <div class="section-heading text-center">
-      <span class="section-label">Explore</span>
-      <h2 class="section-title">Curated Collections</h2>
+    <div class="collections-header">
+      <div>
+        <span class="section-label">Explore</span>
+        <h2 class="section-title">Curated Collections</h2>
+      </div>
+      <a routerLink="/shop" class="view-all-link">View All Collections <i class="bi bi-arrow-right"></i></a>
     </div>
-    <div class="row g-4 mt-4">
-      <div class="col-md-6 col-lg-4" *ngFor="let collection of collections">
-        <a routerLink="/shop" class="collection-card">
-          <img [src]="collection.image" [alt]="collection.name">
-          <div class="collection-info"><h3>{{collection.name}}</h3><span>Explore Collection →</span></div>
+
+    <!-- Featured layout: 1 large + 2 medium + 3 small -->
+    <div class="collections-grid">
+
+      <!-- Large hero card — Living (client image) -->
+      <a routerLink="/shop" class="col-card col-card--hero" aria-label="Living Collection">
+        <div class="col-img-wrap">
+          <img [src]="collections[0].image" [alt]="collections[0].name + ' furniture collection'" loading="eager" width="800" height="600">
+          <div class="col-overlay"></div>
+        </div>
+        <div class="col-info">
+          <span class="col-tag">{{collections[0].name}}</span>
+          <p>Explore Collection <i class="bi bi-arrow-right"></i></p>
+        </div>
+      </a>
+
+      <!-- Right column: 2 medium cards -->
+      <div class="col-right-stack">
+        <a *ngFor="let c of collections.slice(1, 3)" routerLink="/shop" class="col-card col-card--medium" [attr.aria-label]="c.name + ' Collection'">
+          <div class="col-img-wrap">
+            <img [src]="c.image" [alt]="c.name + ' furniture collection'" loading="lazy" width="600" height="400">
+            <div class="col-overlay"></div>
+          </div>
+          <div class="col-info">
+            <span class="col-tag">{{c.name}}</span>
+            <p>Explore Collection <i class="bi bi-arrow-right"></i></p>
+          </div>
         </a>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- 4. Shop by Category -->
-<section class="section-padding category-section">
-  <div class="container">
-    <div class="section-heading">
-      <span class="section-label">Discover</span>
-      <h2 class="section-title">Shop By Category</h2>
     </div>
-    <div class="category-grid">
-      <a *ngFor="let category of categories" routerLink="/shop" class="category-item">
-        <img [src]="category.image" [alt]="category.name">
-        <div class="category-name">{{category.name}}</div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- 5. Featured Products -->
-<section class="section-padding products-section">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-end mb-5">
-      <div><span class="section-label">Our Selection</span><h2 class="section-title mb-0">Featured Products</h2></div>
-      <a routerLink="/shop" class="view-link">View All →</a>
-    </div>
-    <div class="row g-4">
-      <div class="col-12 col-sm-6 col-lg-3" *ngFor="let product of products">
-        <div class="product-card">
-          <div class="product-image">
-            <img [src]="product.image" [alt]="product.name">
-            <button class="wishlist" aria-label="Wishlist"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="product-info">
-            <span>{{product.category}}</span>
-            <h3>{{product.name}}</h3>
-            <p>₹{{product.price | number}}</p>
-          </div>
+    <!-- Bottom row: 3 equal cards -->
+    <div class="collections-bottom">
+      <a *ngFor="let c of collections.slice(3)" routerLink="/shop" class="col-card col-card--small" [attr.aria-label]="c.name + ' Collection'">
+        <div class="col-img-wrap">
+          <img [src]="c.image" [alt]="c.name + ' furniture collection'" loading="lazy" width="500" height="380">
+          <div class="col-overlay"></div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 6. Featured Projects -->
-<section class="section-padding projects-section">
-  <div class="container">
-    <div class="section-heading text-center">
-      <span class="section-label">Our Work</span>
-      <h2 class="section-title">Featured Projects</h2>
-    </div>
-    <div class="projects-grid">
-      <a *ngFor="let project of projects" routerLink="/projects" class="project-card">
-        <img [src]="project.image" [alt]="project.name">
-        <div class="project-info">
-          <span>{{project.category}}</span>
-          <h3>{{project.name}}</h3>
-          <p>{{project.location}}</p>
+        <div class="col-info">
+          <span class="col-tag">{{c.name}}</span>
+          <p>Explore <i class="bi bi-arrow-right"></i></p>
         </div>
       </a>
     </div>
-    <div class="text-center mt-5"><a routerLink="/projects" class="sym-btn sym-btn-outline-dark">View All Projects</a></div>
+
   </div>
 </section>
 
-<!-- 6.5 Interior Showcase Fan Carousel -->
-<section class="showcase-section">
+<!-- 3. Collection Atelier -->
+<section class="collection-atelier">
   <div class="container">
-    <div class="showcase-header">
-      <span class="section-label">Our Interiors</span>
-      <h2 class="section-title">Spaces We've Created</h2>
-      <p class="section-description">A glimpse into the world Symmetry Interiors brings to life — from intimate homes to grand hospitality spaces.</p>
+    <div class="atelier-intro">
+      <span class="section-label">The Collection Atelier</span>
+      <h2>Rooms with a point of view.</h2>
+      <p>Start with the feeling you want to create. Each collection is designed as a complete language of furniture, materials and atmosphere.</p>
     </div>
-  </div>
-  <div class="fan-carousel" aria-label="Interior showcase carousel">
-    <div *ngFor="let s of showcaseSlides; let i = index"
-      class="fan-card"
-      [ngClass]="getShowcasePos(i)"
-      (click)="activeShowcase = i">
-      <img [src]="s.image" [alt]="s.label" loading="lazy">
-      <div class="fan-card-info">
-        <h3>{{s.label}}</h3>
-        <p>{{s.sub}}</p>
-        <a routerLink="/projects" class="fan-btn">View Projects</a>
-      </div>
-    </div>
-    <button class="fan-arrow fan-arrow--prev" (click)="showcasePrev()" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
-    <button class="fan-arrow fan-arrow--next" (click)="showcaseNext()" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
-  </div>
-</section>
-
-<!-- 7. Global Sourcing 3D Fan Carousel -->
-<section class="sourcing-section">
-  <div class="container">
-    <div class="sourcing-header text-center">
-      <span class="section-label">Around The World</span>
-      <h2 class="section-title">Global Sourcing Expertise</h2>
-      <p class="section-description mx-auto" style="max-width:560px">25 years of relationships with the world's finest furniture makers — from Italian ateliers to Balinese artisan studios.</p>
-    </div>
-  </div>
-  <div class="fan-carousel" aria-label="Global sourcing countries">
-    <div *ngFor="let s of sourcingSlides; let i = index"
-      class="fan-card"
-      [ngClass]="getSourcePos(i)"
-      (click)="activeSourcing = i">
-      <img [src]="s.image" [alt]="s.country" loading="lazy">
-      <div class="fan-card-info">
-        <span class="sourcing-flag">{{s.flag}}</span>
-        <h3>{{s.country}}</h3>
-        <p class="sourcing-tagline">{{s.tagline}}</p>
-        <p>{{s.desc}}</p>
-        <a routerLink="/global-sourcing" class="fan-btn">Explore Sourcing</a>
-      </div>
-    </div>
-    <button class="fan-arrow fan-arrow--prev" (click)="sourcingPrev()" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
-    <button class="fan-arrow fan-arrow--next" (click)="sourcingNext()" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
-  </div>
-  <div class="sourcing-dots">
-    <button *ngFor="let s of sourcingSlides; let i = index"
-      class="sourcing-dot" [class.active]="i === activeSourcing"
-      (click)="activeSourcing = i" [attr.aria-label]="s.country">
-    </button>
-  </div>
-</section>
-
-
-<!-- 8. Why Choose Us -->
-<section class="section-padding why-section">
-  <div class="container">
-    <div class="text-center">
-      <span class="section-label">The Difference</span>
-      <h2 class="section-title">Why Choose Symmetry</h2>
-    </div>
-    <div class="row g-4 mt-4">
-      <div class="col-md-6 col-lg-3" *ngFor="let reason of reasons">
-        <div class="reason-card">
-          <i class="bi" [ngClass]="reason.icon"></i>
-          <h3>{{reason.title}}</h3>
-          <p>{{reason.description}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 9. Client Testimonials -->
-<section class="section-padding testimonial-section">
-  <div class="container">
-    <div class="text-center">
-      <span class="section-label">Client Stories</span>
-      <h2 class="section-title">What Our Clients Say</h2>
-    </div>
-    <div class="testimonials-wrapper">
-      <div class="testimonial-body">
-        <i class="bi bi-quote"></i>
-        <p>"{{testimonials[activeTestimonial].quote}}"</p>
-        <strong>{{testimonials[activeTestimonial].author}}</strong>
-        <span class="testimonial-project">{{testimonials[activeTestimonial].project}}</span>
-      </div>
-      <div class="testimonial-dots">
-        <button *ngFor="let t of testimonials; let i = index"
-          [class.active]="i === activeTestimonial"
-          (click)="setTestimonial(i)"
-          [attr.aria-label]="'Testimonial ' + (i + 1)">
+    <div class="atelier-layout">
+      <div class="atelier-menu" role="tablist" aria-label="Collections">
+        <button *ngFor="let collection of collections; let i = index" type="button" class="atelier-option" [class.active]="i === activeCollection" (click)="setCollection(i)" [attr.aria-selected]="i === activeCollection">
+          <span>{{ collection.number }}</span><strong>{{ collection.name }}</strong><i class="bi bi-arrow-up-right"></i>
         </button>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 10. Blog Highlights -->
-<section class="section-padding blog-section">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-end mb-5">
-      <div><span class="section-label">The Journal</span><h2 class="section-title mb-0">From Our Blog</h2></div>
-      <a routerLink="/blog" class="view-link">Read All →</a>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-4" *ngFor="let post of blogPosts">
-        <a [routerLink]="['/blog', post.id]" class="blog-card">
-          <div class="blog-image"><img [src]="post.image" [alt]="post.title"></div>
-          <div class="blog-info">
-            <div class="blog-meta"><span class="blog-category">{{post.category}}</span><span class="blog-date">{{post.date}}</span></div>
-            <h3>{{post.title}}</h3>
-            <p>{{post.excerpt}}</p>
-            <span class="read-more">Read Article →</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 11. Instagram Feed -->
-<section class="instagram-section">
-  <div class="instagram-header">
-    <span class="section-label">Follow Our Work</span>
-    <h2 class="section-title">&#64;symmetryinteriors</h2>
-    <a href="https://instagram.com" target="_blank" rel="noopener" class="insta-follow"><i class="bi bi-instagram"></i> Follow on Instagram</a>
-  </div>
-  <div class="instagram-grid">
-    <a *ngFor="let post of instagramPosts" href="https://instagram.com" target="_blank" rel="noopener" class="insta-post">
-      <img [src]="post.image" [alt]="post.alt">
-      <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
-    </a>
-  </div>
-</section>
-
-<!-- 12. Call-to-Action -->
-<section class="final-cta">
-  <div class="container text-center">
-    <span class="section-label">Begin Your Journey</span>
-    <h2>Let's Create Something Extraordinary.</h2>
-    <p>From concept to completion, let us transform your vision into a timeless space.</p>
-    <div class="cta-buttons">
-      <a routerLink="/contact" class="sym-btn">Start Your Project</a>
-      <a routerLink="/shop" class="sym-btn sym-btn-outline">Browse Collection</a>
-    </div>
-  </div>
-</section>
-
-<!-- 13. Contact Information -->
-<section class="section-padding contact-strip">
-  <div class="container">
-    <div class="row g-4 text-center">
-      <div class="col-md-4">
-        <div class="contact-item">
-          <i class="bi bi-geo-alt"></i>
-          <h4>Visit Us</h4>
-          <p>Banjara Hills, Hyderabad<br>Telangana, India</p>
+      <article class="atelier-feature" aria-live="polite">
+        <div class="atelier-image" [class.has-image]="collections[activeCollection].image">
+          <img *ngIf="collections[activeCollection].image" [src]="collections[activeCollection].image" [alt]="collections[activeCollection].name + ' collection'" loading="lazy">
+          <span *ngIf="!collections[activeCollection].image" class="atelier-image-note">Your {{ collections[activeCollection].name }} image</span>
+          <span class="atelier-index">{{ collections[activeCollection].number }}</span>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="contact-item">
-          <i class="bi bi-telephone"></i>
-          <h4>Call Us</h4>
-          <p>+91 XXXXX XXXXX<br>Mon – Sat, 10am – 7pm</p>
+        <div class="atelier-copy">
+          <span>{{ collections[activeCollection].eyebrow }}</span>
+          <h3>{{ collections[activeCollection].name }}</h3>
+          <p>{{ collections[activeCollection].description }}</p>
+          <a routerLink="/shop" class="atelier-link">Explore the collection <i class="bi bi-arrow-right"></i></a>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="contact-item">
-          <i class="bi bi-envelope"></i>
-          <h4>Email Us</h4>
-          <p>info&#64;symmetryinteriors.com<br>We respond within 24 hours</p>
-        </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
+
+<section class="section-padding category-section"><div class="container"><div class="section-heading"><span class="section-label">Discover</span><h2 class="section-title">Shop By Category</h2></div><div class="category-grid"><a *ngFor="let category of categories" routerLink="/shop" class="category-item"><img [src]="category.image" [alt]="category.name" loading="lazy"><div class="category-name">{{ category.name }}</div></a></div></div></section>
+
+<section class="section-padding products-section"><div class="container"><div class="d-flex justify-content-between align-items-end mb-5"><div><span class="section-label">Our Selection</span><h2 class="section-title mb-0">Featured Products</h2></div><a routerLink="/shop" class="view-link">View All →</a></div><div class="row g-4"><div class="col-12 col-sm-6 col-lg-3" *ngFor="let product of products"><div class="product-card"><div class="product-image"><img [src]="product.image" [alt]="product.name" loading="lazy" width="600" height="420"><button class="wishlist" aria-label="Wishlist"><i class="bi bi-heart"></i></button></div><div class="product-info"><span>{{ product.category }}</span><h3>{{ product.name }}</h3><p>₹{{ product.price | number }}</p></div></div></div></div></div></section>
+
+<section class="section-padding projects-section"><div class="container"><div class="section-heading text-center"><span class="section-label">Our Work</span><h2 class="section-title">Featured Projects</h2></div><div class="projects-grid"><a *ngFor="let project of projects" routerLink="/projects" class="project-card"><img [src]="project.image" [alt]="project.name" loading="lazy" width="800" height="600"><div class="project-info"><span>{{ project.category }}</span><h3>{{ project.name }}</h3><p>{{ project.location }}</p></div></a></div><div class="text-center mt-5"><a routerLink="/projects" class="sym-btn sym-btn-outline-dark">View All Projects</a></div></div></section>
+
+<section class="showcase-section"><div class="container"><div class="showcase-header"><span class="section-label">Our Interiors</span><h2 class="section-title">Spaces We've Created</h2><p class="section-description">A glimpse into the world Symmetry Interiors brings to life — from intimate homes to grand hospitality spaces.</p></div></div><div class="fan-carousel" aria-label="Interior showcase carousel"><div *ngFor="let s of showcaseSlides; let i = index" class="fan-card" [ngClass]="getShowcasePos(i)" (click)="activeShowcase = i"><img [src]="s.image" [alt]="s.label" loading="lazy" width="900" height="600"><div class="fan-card-info"><h3>{{ s.label }}</h3><p>{{ s.sub }}</p><a routerLink="/projects" class="fan-btn">View Projects</a></div></div><button class="fan-arrow fan-arrow--prev" (click)="showcasePrev()" aria-label="Previous"><i class="bi bi-chevron-left"></i></button><button class="fan-arrow fan-arrow--next" (click)="showcaseNext()" aria-label="Next"><i class="bi bi-chevron-right"></i></button></div></section>
+
+<section class="sourcing-section"><div class="container"><div class="sourcing-header text-center"><span class="section-label">Around The World</span><h2 class="section-title">Global Sourcing Expertise</h2><p class="section-description mx-auto" style="max-width:560px">25 years of relationships with the world's finest furniture makers — from Italian ateliers to Balinese artisan studios.</p></div></div><div class="fan-carousel" aria-label="Global sourcing countries"><div *ngFor="let s of sourcingSlides; let i = index" class="fan-card" [ngClass]="getSourcePos(i)" (click)="activeSourcing = i"><img [src]="s.image" [alt]="s.country" loading="lazy" width="700" height="500"><div class="fan-card-info"><span class="sourcing-flag">{{ s.flag }}</span><h3>{{ s.country }}</h3><p class="sourcing-tagline">{{ s.tagline }}</p><p>{{ s.desc }}</p><a routerLink="/global-sourcing" class="fan-btn">Explore Sourcing</a></div></div><button class="fan-arrow fan-arrow--prev" (click)="sourcingPrev()" aria-label="Previous"><i class="bi bi-chevron-left"></i></button><button class="fan-arrow fan-arrow--next" (click)="sourcingNext()" aria-label="Next"><i class="bi bi-chevron-right"></i></button></div><div class="sourcing-dots"><button *ngFor="let s of sourcingSlides; let i = index" class="sourcing-dot" [class.active]="i === activeSourcing" (click)="activeSourcing = i" [attr.aria-label]="s.country"></button></div></section>
+
+<section class="section-padding why-section"><div class="container"><div class="text-center"><span class="section-label">The Difference</span><h2 class="section-title">Why Choose Symmetry</h2></div><div class="row g-4 mt-4"><div class="col-md-6 col-lg-3" *ngFor="let reason of reasons"><div class="reason-card"><i class="bi" [ngClass]="reason.icon"></i><h3>{{ reason.title }}</h3><p>{{ reason.description }}</p></div></div></div></div></section>
+
+<section class="section-padding testimonial-section"><div class="container"><div class="text-center"><span class="section-label">Client Stories</span><h2 class="section-title">What Our Clients Say</h2></div><div class="testimonials-wrapper"><div class="testimonial-body"><i class="bi bi-quote"></i><p>"{{ testimonials[activeTestimonial].quote }}"</p><strong>{{ testimonials[activeTestimonial].author }}</strong><span class="testimonial-project">{{ testimonials[activeTestimonial].project }}</span></div><div class="testimonial-dots"><button *ngFor="let testimonial of testimonials; let i = index" [class.active]="i === activeTestimonial" (click)="setTestimonial(i)" [attr.aria-label]="'Testimonial ' + (i + 1)"></button></div></div></div></section>
+
+<section class="section-padding blog-section"><div class="container"><div class="d-flex justify-content-between align-items-end mb-5"><div><span class="section-label">The Journal</span><h2 class="section-title mb-0">From Our Blog</h2></div><a routerLink="/blog" class="view-link">Read All →</a></div><div class="row g-4"><div class="col-md-4" *ngFor="let post of blogPosts"><a [routerLink]="['/blog', post.id]" class="blog-card"><div class="blog-image"><img [src]="post.image" [alt]="post.title" loading="lazy" width="600" height="400"></div><div class="blog-info"><div class="blog-meta"><span class="blog-category">{{ post.category }}</span><span class="blog-date">{{ post.date }}</span></div><h3>{{ post.title }}</h3><p>{{ post.excerpt }}</p><span class="read-more">Read Article →</span></div></a></div></div></div></section>
+
+<section class="final-cta"><div class="container text-center"><span class="section-label">Begin Your Journey</span><h2>Let's Create Something Extraordinary.</h2><p>From concept to completion, let us transform your vision into a timeless space.</p><div class="cta-buttons"><a routerLink="/contact" class="sym-btn">Start Your Project</a><a routerLink="/shop" class="sym-btn sym-btn-outline">Browse Collection</a></div></div></section>
+
+<section class="section-padding contact-strip"><div class="container"><div class="row g-4 text-center"><div class="col-md-4"><div class="contact-item"><i class="bi bi-geo-alt"></i><h4>Visit Us</h4><p>Banjara Hills, Hyderabad<br>Telangana, India</p></div></div><div class="col-md-4"><div class="contact-item"><i class="bi bi-telephone"></i><h4>Call Us</h4><p>+91 XXXXX XXXXX<br>Mon – Sat, 10am – 7pm</p></div></div><div class="col-md-4"><div class="contact-item"><i class="bi bi-envelope"></i><h4>Email Us</h4><p>info&#64;symmetryinteriors.com<br>We respond within 24 hours</p></div></div></div></div></section>
